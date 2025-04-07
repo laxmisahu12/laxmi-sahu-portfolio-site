@@ -48,40 +48,40 @@
   }
 
   .dark {
-    --background: 227 11% 15%;
-    --foreground: 213 31% 91%;
+    --background: 221 70% 10%; /* Darker navy background (#0a192f) */
+    --foreground: 210 40% 98%; /* Light slate for text */
 
-    --card: 227 11% 15%;
-    --card-foreground: 213 31% 91%;
+    --card: 221 70% 10%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 227 11% 15%;
-    --popover-foreground: 213 31% 91%;
+    --popover: 221 70% 10%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 172 80% 60%;
-    --primary-foreground: 227 11% 15%;
+    --primary: 172 80% 60%; /* Teal color (#64ffda) */
+    --primary-foreground: 221 70% 10%;
 
     --secondary: 226 22% 20%;
-    --secondary-foreground: 213 31% 91%;
+    --secondary-foreground: 210 40% 98%;
 
     --muted: 226 22% 20%;
     --muted-foreground: 215 20.2% 70%;
 
-    --accent: 172 80% 60%;
-    --accent-foreground: 213 31% 91%;
+    --accent: 172 80% 60%; /* Teal accent color */
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 213 31% 91%;
+    --destructive-foreground: 210 40% 98%;
 
     --border: 226 22% 20%;
     --input: 226 22% 20%;
     --ring: 172 80% 60%;
 
-    --sidebar-background: 227 11% 15%;
-    --sidebar-foreground: 213 31% 91%;
-    --sidebar-primary: 172 80% 60%;
-    --sidebar-primary-foreground: 227 11% 15%;
+    --sidebar-background: 221 70% 10%; /* Darker navy */
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 172 80% 60%; /* Teal */
+    --sidebar-primary-foreground: 221 70% 10%;
     --sidebar-accent: 226 22% 20%;
-    --sidebar-accent-foreground: 213 31% 91%;
+    --sidebar-accent-foreground: 210 40% 98%;
     --sidebar-border: 226 22% 20%;
     --sidebar-ring: 172 80% 60%;
   }
