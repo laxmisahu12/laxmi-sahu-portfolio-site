@@ -5,8 +5,30 @@ import Skills from '@/components/home/Skills';
 import Experience from '@/components/home/Experience';
 import CTA from '@/components/home/CTA';
 import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 
 const Index = () => {
+  // For adding a scroll fade-in effect
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('appear');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.section-fade-in').forEach(section => {
+      observer.observe(section);
+    });
+    
+    return () => {
+      document.querySelectorAll('.section-fade-in').forEach(section => {
+        observer.unobserve(section);
+      });
+    };
+  }, []);
+
   return (
     <>
       <Helmet>

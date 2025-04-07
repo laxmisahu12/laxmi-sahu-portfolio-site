@@ -1,7 +1,6 @@
 
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import SectionHeading from '../shared/SectionHeading';
 import { Button } from '@/components/ui/button';
 
 const skills = [
@@ -25,16 +24,13 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section className="section-container section-fade-in bg-secondary/30">
-      <SectionHeading 
-        title="Skills & Expertise" 
-        subtitle="A snapshot of my technical capabilities and proficiencies"
-      />
+    <section className="section-container section-fade-in pt-24" id="skills">
+      <h2 className="section-title numbered-heading">Skills & Expertise</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 mt-12">
         {skills.map((skill) => (
-          <div key={skill.category} className="bg-background p-6 rounded-lg shadow-sm hover-card">
-            <h3 className="text-lg font-semibold mb-4">{skill.category}</h3>
+          <div key={skill.category} className="bg-secondary/30 p-6 rounded-md shadow-sm hover-card border border-border/50">
+            <h3 className="text-lg font-semibold mb-4 text-foreground font-mono">{skill.category}</h3>
             <div className="flex flex-wrap gap-2">
               {skill.items.map((item) => (
                 <span key={item} className="skill-badge">
@@ -46,11 +42,11 @@ const Skills = () => {
         ))}
       </div>
       
-      <div className="text-center mt-8">
-        <Button asChild>
-          <Link to="/skills" className="flex items-center gap-2 mx-auto">
+      <div className="mt-8">
+        <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10">
+          <Link to="/skills" className="flex items-center gap-2 font-mono text-sm">
             View All Skills
-            <ArrowRight size={18} />
+            <ArrowRight size={16} />
           </Link>
         </Button>
       </div>

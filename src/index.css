@@ -92,7 +92,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground dark;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -120,19 +120,29 @@
 
 @layer components {
   .section-container {
-    @apply container mx-auto px-4 py-16 md:py-24;
+    @apply container mx-auto px-4 py-16 md:py-24 max-w-5xl;
   }
   
   .section-title {
-    @apply text-3xl font-bold mb-8 inline-block relative after:content-[''] after:absolute after:w-2/3 after:h-1 after:bg-accent after:left-0 after:-bottom-2;
+    @apply text-2xl font-bold mb-8 inline-block relative font-mono text-foreground;
+  }
+  
+  .section-title::before {
+    content: "0" counter(section) ".";
+    @apply text-primary mr-2 font-mono text-lg;
+  }
+  
+  .section-title::after {
+    content: "";
+    @apply absolute w-64 h-[1px] bg-border/50 ml-4 top-1/2 left-full;
   }
   
   .glass-card {
-    @apply bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-2xl;
+    @apply bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-lg;
   }
   
   .skill-badge {
-    @apply px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground dark:bg-secondary/80 dark:text-secondary-foreground transition-all hover:scale-105;
+    @apply px-3 py-1 rounded-md text-sm font-medium bg-background text-foreground border border-border/50 transition-all hover:border-primary hover:text-primary;
   }
   
   .timeline-item {
@@ -140,19 +150,15 @@
   }
   
   .hover-card {
-    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-lg;
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-lg;
   }
   
-  .typewriter {
-    @apply overflow-hidden whitespace-nowrap border-r-4 border-primary animate-typewriter pr-1 animate-blink;
+  .vertical-text {
+    writing-mode: vertical-rl;
   }
   
-  .section-fade-in {
-    @apply opacity-0 translate-y-8 transition-all duration-700;
-  }
-  
-  .section-fade-in.appear {
-    @apply opacity-100 translate-y-0;
+  .numbered-heading {
+    counter-increment: section;
   }
 }
 

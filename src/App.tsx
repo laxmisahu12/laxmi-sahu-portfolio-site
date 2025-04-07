@@ -15,6 +15,8 @@ import Projects from "./pages/Projects";
 import Certifications from "./pages/Certifications";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import SideNav from "./components/layout/SideNav";
+import SideEmail from "./components/layout/SideEmail";
 
 const queryClient = new QueryClient();
 
@@ -25,18 +27,22 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Index />} />
-              <Route path="about" element={<About />} />
-              <Route path="skills" element={<Skills />} />
-              <Route path="experience" element={<Experience />} />
-              <Route path="projects" element={<Projects />} />
-              <Route path="certifications" element={<Certifications />} />
-              <Route path="contact" element={<Contact />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-          </Routes>
+          <div className="min-h-screen dark">
+            <SideNav />
+            <SideEmail />
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Index />} />
+                <Route path="about" element={<About />} />
+                <Route path="skills" element={<Skills />} />
+                <Route path="experience" element={<Experience />} />
+                <Route path="projects" element={<Projects />} />
+                <Route path="certifications" element={<Certifications />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="*" element={<NotFound />} />
+              </Route>
+            </Routes>
+          </div>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
