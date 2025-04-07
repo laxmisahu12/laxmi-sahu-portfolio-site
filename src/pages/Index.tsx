@@ -1,13 +1,27 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import Hero from '@/components/home/Hero';
+import About from '@/components/home/About';
+import Skills from '@/components/home/Skills';
+import Experience from '@/components/home/Experience';
+import CTA from '@/components/home/CTA';
+import { Helmet } from 'react-helmet-async';
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <Helmet>
+        <title>Laxmi Sahu | Data Engineer & Full Stack Developer</title>
+        <meta name="description" content="Portfolio of Laxmi Sahu, a Data Engineer and Full Stack Developer with 7+ years of experience in Enterprise Application Development, specializing in ETL, Python, AWS and GCP." />
+        <meta property="og:title" content="Laxmi Sahu | Data Engineer & Full Stack Developer" />
+        <meta property="og:description" content="Portfolio of Laxmi Sahu, a Data Engineer and Full Stack Developer with 7+ years of experience in ETL, Python, AWS and GCP." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+      <Hero />
+      <About />
+      <Skills />
+      <Experience />
+      <CTA />
+    </>
   );
 };
 

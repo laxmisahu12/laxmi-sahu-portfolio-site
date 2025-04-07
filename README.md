@@ -1,73 +1,96 @@
-# Welcome to your Lovable project
 
-## Project info
+# Laxmi Sahu - Portfolio Website
 
-**URL**: https://lovable.dev/projects/7e731397-7078-4b00-ad6e-a6bde63b8f68
+A modern, responsive portfolio website built with React, Vite, and TailwindCSS.
 
-## How can I edit this code?
+## Features
 
-There are several ways of editing your application.
+- Responsive design for all devices
+- Dark/light mode toggle
+- Modern animations and transitions
+- SEO optimized
+- Contact form
+- JSON Resume download
+- Preloader with name animation
 
-**Use Lovable**
+## Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7e731397-7078-4b00-ad6e-a6bde63b8f68) and start prompting.
+- React with Vite
+- TypeScript
+- TailwindCSS for styling
+- React Router for navigation
+- React Helmet for SEO
+- Lucide React for icons
 
-Changes made via Lovable will be committed automatically to this repo.
+## Pages
 
-**Use your preferred IDE**
+- Home: Brief introduction and overview
+- About: Detailed professional summary
+- Skills: Categorized technical competencies
+- Experience: Work history with detailed achievements
+- Projects: Portfolio of technical projects
+- Certifications: Professional credentials
+- Contact: Contact form and connection options
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Installation and Setup
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+```bash
+# Clone the repository
+git clone <repository-url>
 
-Follow these steps:
+# Navigate to the project directory
+cd laxmi-sahu-portfolio
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Install dependencies
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Deployment Instructions
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Deploying to Vercel
 
-**Use GitHub Codespaces**
+1. Create a Vercel account at [vercel.com](https://vercel.com)
+2. Install Vercel CLI: `npm i -g vercel`
+3. Run `vercel login` and follow the prompts
+4. From your project directory, run `vercel` to deploy
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Deploying to Netlify
 
-## What technologies are used for this project?
+1. Create a Netlify account at [netlify.com](https://netlify.com)
+2. Set up your build settings:
+   - Build command: `npm run build`
+   - Publish directory: `dist`
+3. Deploy using the Netlify UI or CLI tools
 
-This project is built with:
+### Deploying to GitHub Pages
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. Install gh-pages package: `npm install --save-dev gh-pages`
+2. Add these scripts to package.json:
+   ```json
+   "predeploy": "npm run build",
+   "deploy": "gh-pages -d dist"
+   ```
+3. Add a homepage field to package.json: `"homepage": "https://<username>.github.io/<repository>/"`
+4. Run `npm run deploy` to publish
 
-## How can I deploy this project?
+## Customization
 
-Simply open [Lovable](https://lovable.dev/projects/7e731397-7078-4b00-ad6e-a6bde63b8f68) and click on Share -> Publish.
+The website can be customized by:
 
-## Can I connect a custom domain to my Lovable project?
+1. Editing the content in the components
+2. Modifying the theme colors in `tailwind.config.ts`
+3. Updating the resume.json file for the downloadable resume
 
-Yes it is!
+## Browser Support
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## License
+
+MIT License

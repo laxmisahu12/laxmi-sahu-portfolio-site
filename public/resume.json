@@ -1,0 +1,165 @@
+
+{
+  "basics": {
+    "name": "Laxmi Sahu",
+    "label": "Data Engineer & Full Stack Developer",
+    "email": "laxmisahu1211@gmail.com",
+    "phone": "+46 764453551",
+    "url": "https://www.linkedin.com/in/laxmisahu1211",
+    "summary": "With 7+ years of experience in Enterprise Application Development, I specialize in Data Engineering, ETL, Python, GCP and AWS to build scalable, efficient, and high-performance solutions. My expertise spans across designing data pipelines, real-time processing, automation frameworks, and system optimization, leading to impactful results.",
+    "location": {
+      "city": "Stockholm",
+      "countryCode": "SE",
+      "region": "Sweden"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "laxmisahu1211",
+        "url": "https://www.linkedin.com/in/laxmisahu1211"
+      },
+      {
+        "network": "GitHub",
+        "username": "laxmisahu",
+        "url": "https://github.com"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "Bitwise Solutions Pvt. Ltd",
+      "position": "System Analyst",
+      "location": "Pune, India",
+      "startDate": "2024-07",
+      "endDate": "2024-12",
+      "highlights": [
+        "Engineered a module to generate JMX files from Postman Collection enabling seamless integration with JMeter.",
+        "Integrated the solution into the Jenkins pipeline, reducing manual work by 90%.",
+        "Utilized Kafka for real-time messaging, Splunk for reporting and AWS S3 for cloud storage."
+      ]
+    },
+    {
+      "company": "Securly India Private Limited",
+      "position": "Sr. Software Engineer",
+      "location": "Pune, India",
+      "startDate": "2020-05",
+      "endDate": "2023-05",
+      "highlights": [
+        "Developed a module for domain and URL classification, processing over 10 million URLs monthly.",
+        "Enhanced legacy code, reducing system errors by 30% and improving performance by 20%.",
+        "Collected offender data from 100+ US counties using Selenium and web scraping techniques.",
+        "Assisted in building a robust database for tracking offenders."
+      ]
+    },
+    {
+      "company": "Securly India Private Limited",
+      "position": "Software Engineer",
+      "location": "Pune, India",
+      "startDate": "2019-10",
+      "endDate": "2020-05",
+      "highlights": [
+        "Led ETL project, extracting and transforming data from 5+ sources, resulting in a 60% increase in reporting efficiency.",
+        "Enabled data analysts to generate insights, contributing to a 45% improvement in marketing and sales strategies.",
+        "Created an audit reporting system, generating PR reports for 500+ clients, reducing report generation time by 80%."
+      ]
+    },
+    {
+      "company": "SPEGI Technologies",
+      "position": "Full Stack & Android Developer",
+      "location": "Indore, India",
+      "startDate": "2015-12",
+      "endDate": "2018-05",
+      "highlights": [
+        "Engineered Swim Team Management web application, reducing administrative tasks by 70%, saving coaches 10+ hours weekly.",
+        "Developed an Android app for managing Education ERP modules, used by institutions, improving management efficiency by 35% and achieving a 95% user satisfaction rate."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Sanghavi Innovative Academy, RGTU",
+      "area": "Computer Science & Engineering",
+      "studyType": "Bachelor",
+      "startDate": "2010-08",
+      "endDate": "2014-05",
+      "location": "Indore, India"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Programming Languages",
+      "keywords": ["Python", "Java", "SQL"]
+    },
+    {
+      "name": "Frameworks & Libraries",
+      "keywords": ["PySpark3", "Flask", "Pandas", "NumPy"]
+    },
+    {
+      "name": "Data Engineering",
+      "keywords": ["ETL", "Web Scraping", "Data Pipelines", "Data Modeling"]
+    },
+    {
+      "name": "Databases",
+      "keywords": ["MySQL", "PostgreSQL", "AWS Redshift", "Redis", "Elasticsearch"]
+    },
+    {
+      "name": "Cloud Platforms",
+      "keywords": ["AWS ECS", "EC2", "S3", "Cloud Watch", "ASG", "GCP", "BigQuery"]
+    },
+    {
+      "name": "DevOps & Automation",
+      "keywords": ["Jenkins", "Selenium", "JMeter", "Git"]
+    },
+    {
+      "name": "API & Integration",
+      "keywords": ["REST API", "gRPC", "Email API", "Slack API", "Kafka"]
+    },
+    {
+      "name": "Data Visualization",
+      "keywords": ["Mode Analytics", "Tableau", "Looker Studio", "Elastic Kibana", "Matplotlib", "Seaborn"]
+    },
+    {
+      "name": "Tools & IDE",
+      "keywords": ["Postman", "Ubuntu", "PyCharm", "VSCode"]
+    }
+  ],
+  "certificates": [
+    {
+      "name": "Azure Databricks and PySpark3",
+      "issuer": "Microsoft",
+      "date": "2023-01"
+    }
+  ],
+  "projects": [
+    {
+      "name": "ETL Data Pipeline for URL Classification",
+      "description": "Developed an end-to-end data pipeline for classifying and analyzing millions of URLs monthly.",
+      "technologies": ["Python", "AWS", "Kafka", "Elasticsearch", "Redis"]
+    },
+    {
+      "name": "Automated Testing Framework",
+      "description": "Built a framework that generates JMX files from Postman Collections, reducing manual testing efforts by 90%.",
+      "technologies": ["Java", "Jenkins", "JMeter", "Postman", "AWS S3"]
+    },
+    {
+      "name": "Swim Team Management Application",
+      "description": "Engineered a web application reducing administrative tasks by 70%.",
+      "technologies": ["Java", "Spring Boot", "MySQL", "HTML/CSS", "JavaScript"]
+    },
+    {
+      "name": "Educational ERP Android App",
+      "description": "Developed an Android application improving management efficiency by 35%.",
+      "technologies": ["Java", "Android SDK", "Firebase", "RESTful APIs"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": "Professional"
+    },
+    {
+      "language": "Hindi",
+      "fluency": "Native"
+    }
+  ]
+}
