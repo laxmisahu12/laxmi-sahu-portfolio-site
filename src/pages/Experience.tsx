@@ -2,7 +2,7 @@
 import PageBanner from '@/components/shared/PageBanner';
 import SectionHeading from '@/components/shared/SectionHeading';
 import { Helmet } from 'react-helmet-async';
-import { Calendar, MapPin, ChevronRight } from 'lucide-react';
+import { Calendar, MapPin } from 'lucide-react';
 
 const experiences = [
   {
@@ -68,97 +68,58 @@ const Experience = () => {
         subtitle="A detailed overview of my career journey and key accomplishments"
       />
       
-      <div className="section-container relative">
-        <div className="absolute inset-0 bg-grid-pattern opacity-[0.05]"></div>
-        <div className="relative z-10">
-          <SectionHeading 
-            title="Work Experience" 
-            subtitle="My professional journey through various roles and organizations"
-            className="section-fade-in"
-          />
-          
-          <div className="space-y-12 section-fade-in">
-            {experiences.map((exp, index) => (
-              <div 
-                key={index} 
-                className="bg-background/80 backdrop-blur-sm p-6 rounded-lg shadow-sm border border-primary/20 hover-card"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="flex flex-col md:flex-row gap-6">
-                  <div className="flex-shrink-0 flex items-start justify-center">
-                    <div className="w-20 h-20 bg-secondary rounded-lg flex items-center justify-center p-2 shadow-sm animated-border">
-                      <img 
-                        src={exp.logo} 
-                        alt={`${exp.company} logo`} 
-                        className="max-w-full max-h-full object-contain" 
-                      />
+      <div className="section-container">
+        <SectionHeading 
+          title="Work Experience" 
+          subtitle="My professional journey through various roles and organizations"
+          className="section-fade-in"
+        />
+        
+        <div className="space-y-12 section-fade-in">
+          {experiences.map((exp, index) => (
+            <div key={index} className="bg-secondary/30 p-6 rounded-lg shadow-sm border border-border/50 hover-card">
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="flex-shrink-0 flex items-start justify-center">
+                  <div className="w-20 h-20 bg-background rounded-lg flex items-center justify-center p-2 shadow-sm">
+                    <img 
+                      src={exp.logo} 
+                      alt={`${exp.company} logo`} 
+                      className="max-w-full max-h-full object-contain" 
+                    />
+                  </div>
+                </div>
+                
+                <div className="flex-grow">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                    <div>
+                      <h3 className="text-xl font-semibold">{exp.title}</h3>
+                      <h4 className="text-lg text-primary">{exp.company}</h4>
+                    </div>
+                    
+                    <div className="mt-2 md:mt-0 space-y-2">
+                      <div className="flex items-center text-muted-foreground">
+                        <Calendar size={16} className="mr-2" />
+                        <span>{exp.period}</span>
+                      </div>
+                      <div className="flex items-center text-muted-foreground">
+                        <MapPin size={16} className="mr-2" />
+                        <span>{exp.location}</span>
+                      </div>
                     </div>
                   </div>
                   
-                  <div className="flex-grow">
-                    <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-4">
-                      <div>
-                        <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">{exp.title}</h3>
-                        <h4 className="text-lg gradient-text">{exp.company}</h4>
-                      </div>
-                      
-                      <div className="space-y-2 bg-secondary/50 rounded-lg p-3 backdrop-blur-sm">
-                        <div className="flex items-center text-muted-foreground">
-                          <Calendar size={16} className="mr-2 text-primary" />
-                          <span>{exp.period}</span>
-                        </div>
-                        <div className="flex items-center text-muted-foreground">
-                          <MapPin size={16} className="mr-2 text-primary" />
-                          <span>{exp.location}</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="mt-4">
-                      <h5 className="font-medium mb-4 text-primary">Key Achievements:</h5>
-                      <ul className="space-y-3">
-                        {exp.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <ChevronRight size={18} className="text-primary flex-shrink-0 mt-1" />
-                            <span>{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                  <div className="mt-4">
+                    <h5 className="font-medium mb-2">Key Achievements:</h5>
+                    <ul className="list-disc pl-5 space-y-2">
+                      {exp.achievements.map((achievement, i) => (
+                        <li key={i}>{achievement}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-          
-          <div className="mt-20 section-fade-in">
-            <SectionHeading 
-              title="Key Accomplishments" 
-              subtitle="Notable achievements across my career"
-            />
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="p-6 rounded-lg bg-primary/10 backdrop-blur-sm border border-primary/20 hover-card text-center">
-                <div className="text-4xl font-bold mb-2 gradient-text">90%</div>
-                <p className="text-muted-foreground">Reduction in manual testing efforts through automation</p>
-              </div>
-              
-              <div className="p-6 rounded-lg bg-primary/10 backdrop-blur-sm border border-primary/20 hover-card text-center">
-                <div className="text-4xl font-bold mb-2 gradient-text">10M+</div>
-                <p className="text-muted-foreground">URLs processed monthly in data pipeline</p>
-              </div>
-              
-              <div className="p-6 rounded-lg bg-primary/10 backdrop-blur-sm border border-primary/20 hover-card text-center">
-                <div className="text-4xl font-bold mb-2 gradient-text">60%</div>
-                <p className="text-muted-foreground">Increase in reporting efficiency from ETL improvements</p>
-              </div>
-              
-              <div className="p-6 rounded-lg bg-primary/10 backdrop-blur-sm border border-primary/20 hover-card text-center">
-                <div className="text-4xl font-bold mb-2 gradient-text">7+</div>
-                <p className="text-muted-foreground">Years of professional experience in data engineering</p>
-              </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </>
