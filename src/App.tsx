@@ -17,6 +17,28 @@ import NotFound from "./pages/NotFound";
 import SideNav from "./components/layout/SideNav";
 import SideEmail from "./components/layout/SideEmail";
 
+// Create company logo directories
+const companyLogos = [
+  { name: 'outlier.png', url: 'https://via.placeholder.com/80/3a3f51/64ffda?text=Outlier.ai' },
+  { name: 'bitwise.png', url: 'https://via.placeholder.com/80/3a3f51/64ffda?text=Bitwise' },
+  { name: 'securly.png', url: 'https://via.placeholder.com/80/3a3f51/64ffda?text=Securly' },
+  { name: 'spegi.png', url: 'https://via.placeholder.com/80/3a3f51/64ffda?text=SPEGI' }
+];
+
+// Pre-load company logos
+companyLogos.forEach(logo => {
+  const img = new Image();
+  img.src = logo.url;
+  // Create a virtual link for the images to be accessible
+  if (!document.querySelector(`link[href="${logo.url}"]`)) {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.href = logo.url;
+    link.as = 'image';
+    document.head.appendChild(link);
+  }
+});
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -26,7 +48,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <div className="min-h-screen dark">
+          <div className="min-h-screen dark overflow-x-hidden w-full">
             <SideNav />
             <SideEmail />
             <Routes>

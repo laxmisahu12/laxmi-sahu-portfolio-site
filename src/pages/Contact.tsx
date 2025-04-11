@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -26,15 +27,31 @@ const Contact = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
+    try {
+      // Prepare template parameters for EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: 'Laxmi Sahu',
+        reply_to: formData.email,
+      };
+      
+      // Send email using EmailJS
+      await emailjs.send(
+        'service_yf7aqrd', // Your EmailJS service ID
+        'template_wkvlx2c', // Your EmailJS template ID
+        templateParams,
+        'vEqRVlVT8lABiLj-v' // Your EmailJS public key
+      );
+      
       toast({
-        title: "Message sent!",
+        title: "Message sent successfully!",
         description: "Thank you for your message. I'll get back to you soon.",
       });
       
@@ -45,8 +62,16 @@ const Contact = () => {
         subject: '',
         message: ''
       });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: "Message failed to send",
+        description: "There was an error sending your message. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -69,7 +94,7 @@ const Contact = () => {
             <div className="space-y-6 mb-8">
               <div className="flex items-start">
                 <div className="mr-4 mt-1">
-                  <Mail className="text-primary" size={24} />
+                  <Mail className="text-primary hover:animate-bounce-slow transition-all" size={24} />
                 </div>
                 <div>
                   <h3 className="text-lg font-medium mb-1">Email</h3>
@@ -80,7 +105,7 @@ const Contact = () => {
               
               <div className="flex items-start">
                 <div className="mr-4 mt-1">
-                  <Phone className="text-primary" size={24} />
+                  <Phone className="text-primary hover:animate-bounce-slow transition-all" size={24} />
                 </div>
                 <div>
                   <h3 className="text-lg font-medium mb-1">Phone</h3>
@@ -91,7 +116,7 @@ const Contact = () => {
               
               <div className="flex items-start">
                 <div className="mr-4 mt-1">
-                  <MapPin className="text-primary" size={24} />
+                  <MapPin className="text-primary hover:animate-bounce-slow transition-all" size={24} />
                 </div>
                 <div>
                   <h3 className="text-lg font-medium mb-1">Location</h3>
@@ -121,6 +146,7 @@ const Contact = () => {
                     onChange={handleChange} 
                     placeholder="John Doe" 
                     required 
+                    className="transition-all duration-300 focus:border-primary focus:ring-1 focus:ring-primary hover:border-primary/70"
                   />
                 </div>
                 
@@ -134,6 +160,7 @@ const Contact = () => {
                     onChange={handleChange} 
                     placeholder="john@example.com" 
                     required 
+                    className="transition-all duration-300 focus:border-primary focus:ring-1 focus:ring-primary hover:border-primary/70"
                   />
                 </div>
               </div>
@@ -147,6 +174,7 @@ const Contact = () => {
                   onChange={handleChange} 
                   placeholder="Project Discussion" 
                   required 
+                  className="transition-all duration-300 focus:border-primary focus:ring-1 focus:ring-primary hover:border-primary/70"
                 />
               </div>
               
@@ -158,7 +186,7 @@ const Contact = () => {
                   value={formData.message} 
                   onChange={handleChange} 
                   placeholder="Your message here..." 
-                  className="min-h-[150px]" 
+                  className="min-h-[150px] transition-all duration-300 focus:border-primary focus:ring-1 focus:ring-primary hover:border-primary/70" 
                   required 
                 />
               </div>
@@ -166,9 +194,13 @@ const Contact = () => {
               <Button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full md:w-auto"
+                className="w-full md:w-auto relative overflow-hidden group"
               >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                <span className="relative z-10 flex items-center">
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  <Mail className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={16} />
+                </span>
+                <span className="absolute left-0 w-0 h-full bg-primary/20 -z-10 group-hover:w-full transition-all duration-300"></span>
               </Button>
             </form>
           </div>

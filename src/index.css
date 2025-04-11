@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
 
 @tailwind base;
@@ -93,12 +92,16 @@
   }
   html, body {
     @apply overflow-x-hidden;
+    width: 100%;
+    max-width: 100%;
   }
   body {
     @apply bg-background text-foreground dark;
     font-feature-settings: "rlig" 1, "calt" 1;
     width: 100%;
     max-width: 100vw;
+    overflow-x: hidden;
+    position: relative;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-sans font-bold;
@@ -147,11 +150,11 @@
   }
   
   .skill-badge {
-    @apply px-3 py-1 rounded-md text-sm font-medium bg-background text-foreground border border-border/50 transition-all hover:border-primary hover:text-primary;
+    @apply px-3 py-1 rounded-md text-sm font-medium bg-background text-foreground border border-border/50 transition-all hover:border-primary hover:text-primary hover:scale-105 hover:-translate-y-1;
   }
   
   .timeline-item {
-    @apply relative pl-8 pb-8 border-l border-muted last:border-0 before:content-[''] before:absolute before:w-4 before:h-4 before:bg-accent before:rounded-full before:-left-2 before:top-0;
+    @apply relative before:content-[''] before:absolute before:w-4 before:h-4 before:bg-accent before:rounded-full before:-left-2 before:top-0 before:animate-pulse;
   }
   
   .hover-card {
@@ -176,6 +179,26 @@
   .section-fade-in.appear {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Image hover effects */
+  .image-hover-effect {
+    @apply transition-transform duration-300 hover:scale-110 hover:rotate-2;
+  }
+  
+  /* Button hover effects */
+  .button-hover-effect {
+    @apply relative overflow-hidden after:absolute after:inset-0 after:bg-primary/20 after:scale-x-0 after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-300;
+  }
+
+  /* Progress bar animations */
+  .progress-bar-animate {
+    @apply transition-all duration-1000 ease-out;
+  }
+  
+  /* Microinteraction for inputs */
+  .input-micro-animation {
+    @apply transition-all duration-300 focus:scale-105 focus:border-primary;
   }
 }
 
@@ -217,6 +240,27 @@
   0% {
     width: 0;
   }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--primary), 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(var(--primary), 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .animate-pulse-slow {
@@ -231,6 +275,16 @@
   animation: float 6s ease-in-out infinite;
 }
 
+.animate-ripple {
+  animation: ripple 1.5s infinite ease-out;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(var(--primary), 0.1), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
+}
+
 /* Fix for mobile view */
 .container {
   width: 100%;
@@ -238,6 +292,8 @@
   padding-right: 1rem;
   margin-left: auto;
   margin-right: auto;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 @media (min-width: 640px) {
@@ -252,4 +308,16 @@
     padding-left: 2rem;
     padding-right: 2rem;
   }
+}
+
+/* Fix mobile horizontal scroll */
+#root {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Override any absolute positioned elements that might cause overflow */
+.absolute {
+  max-width: 100vw;
 }

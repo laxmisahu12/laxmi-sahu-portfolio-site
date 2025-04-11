@@ -8,7 +8,7 @@ const experiences = [
   {
     title: 'AI Engineer (Freelancer)',
     company: 'Outlier.ai',
-    logo: 'https://via.placeholder.com/80',
+    logo: '/company-logos/outlier.png',
     period: 'January 2025 - Present',
     location: 'Stockholm, Sweden',
     achievements: [
@@ -21,7 +21,7 @@ const experiences = [
   {
     title: 'System Analyst',
     company: 'Bitwise Solutions Pvt. Ltd',
-    logo: 'https://via.placeholder.com/80',
+    logo: '/company-logos/bitwise.png',
     period: 'July 2024 - December 2024',
     location: 'Pune, India',
     achievements: [
@@ -33,7 +33,7 @@ const experiences = [
   {
     title: 'Software Engineer',
     company: 'Securly India Private Limited',
-    logo: 'https://via.placeholder.com/80',
+    logo: '/company-logos/securly.png',
     period: 'March 2019 - May 2023',
     location: 'Pune, India',
     achievements: [
@@ -48,7 +48,7 @@ const experiences = [
   {
     title: 'Full Stack & Android Developer',
     company: 'SPEGI Technologies',
-    logo: 'https://via.placeholder.com/80',
+    logo: '/company-logos/spegi.png',
     period: 'December 2015 - May 2018',
     location: 'Indore, India',
     achievements: [
@@ -80,14 +80,16 @@ const Experience = () => {
         
         <div className="space-y-12 section-fade-in">
           {experiences.map((exp, index) => (
-            <div key={index} className="bg-secondary/30 p-6 rounded-lg shadow-sm border border-border/50 hover-card">
+            <div key={index} 
+              className="bg-secondary/30 p-6 rounded-lg shadow-sm border border-border/50 hover-card transform transition-all duration-300 hover:translate-y-[-5px] hover:shadow-md"
+            >
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex-shrink-0 flex items-start justify-center">
-                  <div className="w-20 h-20 bg-background rounded-lg flex items-center justify-center p-2 shadow-sm">
+                  <div className="w-20 h-20 bg-background rounded-lg flex items-center justify-center p-2 shadow-sm overflow-hidden group">
                     <img 
                       src={exp.logo} 
                       alt={`${exp.company} logo`} 
-                      className="max-w-full max-h-full object-contain" 
+                      className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110" 
                     />
                   </div>
                 </div>
@@ -95,17 +97,17 @@ const Experience = () => {
                 <div className="flex-grow">
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                     <div>
-                      <h3 className="text-xl font-semibold">{exp.title}</h3>
+                      <h3 className="text-xl font-semibold text-foreground">{exp.title}</h3>
                       <h4 className="text-lg text-primary">{exp.company}</h4>
                     </div>
                     
                     <div className="mt-2 md:mt-0 space-y-2">
                       <div className="flex items-center text-muted-foreground">
-                        <Calendar size={16} className="mr-2" />
+                        <Calendar size={16} className="mr-2 text-primary animate-pulse-slow" />
                         <span>{exp.period}</span>
                       </div>
                       <div className="flex items-center text-muted-foreground">
-                        <MapPin size={16} className="mr-2" />
+                        <MapPin size={16} className="mr-2 text-primary animate-pulse-slow" />
                         <span>{exp.location}</span>
                       </div>
                     </div>
@@ -113,9 +115,12 @@ const Experience = () => {
                   
                   <div className="mt-4">
                     <h5 className="font-medium mb-2">Key Achievements:</h5>
-                    <ul className="list-disc pl-5 space-y-2">
+                    <ul className="list-none pl-0 space-y-2">
                       {exp.achievements.map((achievement, i) => (
-                        <li key={i}>{achievement}</li>
+                        <li key={i} className="timeline-item relative pl-8 pb-4 last:pb-0 flex items-start">
+                          <div className="absolute left-0 top-0 w-4 h-4 bg-primary rounded-full flex items-center justify-center animate-pulse-slow before:content-[''] before:absolute before:w-2 before:h-2 before:bg-primary-foreground before:rounded-full"></div>
+                          <span>{achievement}</span>
+                        </li>
                       ))}
                     </ul>
                   </div>
