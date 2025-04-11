@@ -6,6 +6,19 @@ import { Calendar, MapPin } from 'lucide-react';
 
 const experiences = [
   {
+    title: 'AI Engineer (Freelancer)',
+    company: 'Outlier.ai',
+    logo: 'https://via.placeholder.com/80',
+    period: 'January 2025 - Present',
+    location: 'Stockholm, Sweden',
+    achievements: [
+      'Developing and implementing advanced NLP models for content analysis and classification.',
+      'Creating AI-driven recommendation systems to enhance user engagement and content discovery.',
+      'Building and optimizing machine learning pipelines for real-time data processing.',
+      'Implementing transformer-based models for text generation and summarization tasks.'
+    ]
+  },
+  {
     title: 'System Analyst',
     company: 'Bitwise Solutions Pvt. Ltd',
     logo: 'https://via.placeholder.com/80',
@@ -18,27 +31,17 @@ const experiences = [
     ]
   },
   {
-    title: 'Sr. Software Engineer',
+    title: 'Software Engineer',
     company: 'Securly India Private Limited',
     logo: 'https://via.placeholder.com/80',
-    period: 'May 2020 - May 2023',
+    period: 'March 2019 - May 2023',
     location: 'Pune, India',
     achievements: [
       'Developed a module for domain and URL classification, processing over 10 million URLs monthly.',
       'Enhanced legacy code, reducing system errors by 30% and improving performance by 20%.',
-      'Collected offender data from 100+ US counties using Selenium and web scraping techniques.',
-      'Assisted in building a robust database for tracking offenders.'
-    ]
-  },
-  {
-    title: 'Software Engineer',
-    company: 'Securly India Private Limited',
-    logo: 'https://via.placeholder.com/80',
-    period: 'October 2019 - May 2020',
-    location: 'Pune, India',
-    achievements: [
       'Led ETL project, extracting and transforming data from 5+ sources, resulting in a 60% increase in reporting efficiency.',
       'Enabled data analysts to generate insights, contributing to a 45% improvement in marketing and sales strategies.',
+      'Collected offender data from 100+ US counties using Selenium and web scraping techniques.',
       'Created an audit reporting system, generating PR reports for 500+ clients, reducing report generation time by 80%.'
     ]
   },

@@ -30,7 +30,7 @@ const Hero = () => {
             </Button>
             
             <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary/10">
-              <a href="/resume.json" download="laxmi-sahu-resume.json" className="font-mono text-sm">
+              <a href="/laxmi-sahu-resume.pdf" download className="font-mono text-sm">
                 Resume
                 <Download size={16} className="ml-2" />
               </a>

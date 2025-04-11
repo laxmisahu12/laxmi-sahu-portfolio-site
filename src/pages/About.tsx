@@ -1,9 +1,9 @@
+
 import PageBanner from '@/components/shared/PageBanner';
 import SectionHeading from '@/components/shared/SectionHeading';
 import ContactIcons from '@/components/shared/ContactIcons';
 import { Helmet } from 'react-helmet-async';
 import { Briefcase, GraduationCap } from 'lucide-react';
-import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const About = () => {
   return (
@@ -19,7 +19,7 @@ const About = () => {
       />
       
       <div className="section-container">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start section-fade-in">
+        <div className="grid grid-cols-1 gap-12 section-fade-in">
           <div>
             <SectionHeading title="Professional Summary" />
             
@@ -52,20 +52,6 @@ const About = () => {
           </div>
           
           <div className="space-y-8">
-            <div className="relative max-w-sm mx-auto lg:ml-auto lg:mr-0">
-              <div className="relative z-10 overflow-hidden rounded-md border-2 border-primary/20">
-                <AspectRatio ratio={1/1} className="bg-secondary/30">
-                  <img 
-                    src="/lovable-uploads/8cd2f2ff-0d22-4565-ba19-026f6395f405.png" 
-                    alt="Laxmi Sahu"
-                    className="object-cover h-full w-full brightness-90 contrast-105"
-                  />
-                </AspectRatio>
-              </div>
-              {/* Decorative frame */}
-              <div className="absolute -top-4 -right-4 border-2 border-primary w-full h-full rounded-md z-0"></div>
-            </div>
-            
             <div>
               <SectionHeading title="Education & Experience" />
               
@@ -91,21 +77,21 @@ const About = () => {
                 
                 <div className="space-y-6">
                   <div className="timeline-item">
+                    <h4 className="text-lg font-medium">AI Engineer (Freelancer)</h4>
+                    <p className="text-primary">Outlier.ai</p>
+                    <p className="text-muted-foreground">January 2025 - Present | Stockholm, Sweden</p>
+                  </div>
+                  
+                  <div className="timeline-item">
                     <h4 className="text-lg font-medium">System Analyst</h4>
                     <p className="text-primary">Bitwise Solutions Pvt. Ltd</p>
                     <p className="text-muted-foreground">July 2024 - December 2024 | Pune, India</p>
                   </div>
                   
                   <div className="timeline-item">
-                    <h4 className="text-lg font-medium">Sr. Software Engineer</h4>
-                    <p className="text-primary">Securly India Private Limited</p>
-                    <p className="text-muted-foreground">May 2020 - May 2023 | Pune, India</p>
-                  </div>
-                  
-                  <div className="timeline-item">
                     <h4 className="text-lg font-medium">Software Engineer</h4>
                     <p className="text-primary">Securly India Private Limited</p>
-                    <p className="text-muted-foreground">October 2019 - May 2020 | Pune, India</p>
+                    <p className="text-muted-foreground">March 2019 - May 2023 | Pune, India</p>
                   </div>
                   
                   <div className="timeline-item">

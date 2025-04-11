@@ -3,7 +3,6 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SectionHeading from '../shared/SectionHeading';
 import { Button } from '@/components/ui/button';
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const About = () => {
@@ -51,28 +50,6 @@ const About = () => {
             </div>
             {/* Decorative frame */}
             <div className="absolute -top-4 -right-4 border-2 border-primary w-full h-full rounded-md z-0"></div>
-          </div>
-
-          <div className="hidden lg:grid grid-cols-2 gap-4 mt-8">
-            <div className="bg-secondary dark:bg-secondary/30 p-6 rounded-lg shadow-sm hover-card">
-              <h3 className="text-2xl font-bold text-primary mb-2">90%</h3>
-              <p className="text-muted-foreground">Reduction in manual efforts by automating workflows</p>
-            </div>
-            
-            <div className="bg-secondary dark:bg-secondary/30 p-6 rounded-lg shadow-sm hover-card">
-              <h3 className="text-2xl font-bold text-primary mb-2">30%</h3>
-              <p className="text-muted-foreground">Decrease in system errors and 20% performance improvement</p>
-            </div>
-            
-            <div className="bg-secondary dark:bg-secondary/30 p-6 rounded-lg shadow-sm hover-card">
-              <h3 className="text-2xl font-bold text-primary mb-2">60%</h3>
-              <p className="text-muted-foreground">Boost in reporting efficiency through data analytics</p>
-            </div>
-            
-            <div className="bg-secondary dark:bg-secondary/30 p-6 rounded-lg shadow-sm hover-card">
-              <h3 className="text-2xl font-bold text-primary mb-2">10M+</h3>
-              <p className="text-muted-foreground">URLs processed monthly for classification and analysis</p>
-            </div>
           </div>
         </div>
       </div>

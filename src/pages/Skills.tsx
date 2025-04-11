@@ -2,52 +2,53 @@
 import PageBanner from '@/components/shared/PageBanner';
 import SectionHeading from '@/components/shared/SectionHeading';
 import { Helmet } from 'react-helmet-async';
+import { Code, Database, Server, Globe, FileCode, BarChart, Terminal, Cog, Settings, WifiIcon } from 'lucide-react';
 
 const skillGroups = [
   {
     category: 'Programming Languages',
     skills: ['Python', 'Java', 'SQL'],
-    icon: '💻'
+    icon: <Code className="h-6 w-6 text-primary" />
   },
   {
     category: 'Frameworks & Libraries',
     skills: ['PySpark3', 'Flask', 'Pandas', 'NumPy'],
-    icon: '🔧'
+    icon: <FileCode className="h-6 w-6 text-primary" />
   },
   {
     category: 'Data Engineering',
     skills: ['ETL', 'Web Scraping', 'Data Pipelines', 'Data Modeling'],
-    icon: '📊'
+    icon: <Database className="h-6 w-6 text-primary" />
   },
   {
     category: 'Databases',
     skills: ['MySQL', 'PostgreSQL', 'AWS Redshift', 'Redis', 'Elasticsearch'],
-    icon: '🗄️'
+    icon: <Server className="h-6 w-6 text-primary" />
   },
   {
     category: 'Cloud Platforms',
     skills: ['AWS ECS', 'EC2', 'S3', 'Cloud Watch', 'ASG', 'GCP', 'BigQuery'],
-    icon: '☁️'
+    icon: <Globe className="h-6 w-6 text-primary" />
   },
   {
     category: 'DevOps & Automation',
     skills: ['Jenkins', 'Selenium', 'JMeter', 'Git'],
-    icon: '🔄'
+    icon: <Settings className="h-6 w-6 text-primary" />
   },
   {
     category: 'API & Integration',
     skills: ['REST API', 'gRPC', 'Email API', 'Slack API', 'Kafka'],
-    icon: '🔌'
+    icon: <WifiIcon className="h-6 w-6 text-primary" />
   },
   {
     category: 'Data Visualization',
     skills: ['Mode Analytics', 'Tableau', 'Looker Studio', 'Elastic Kibana', 'Matplotlib', 'Seaborn'],
-    icon: '📈'
+    icon: <BarChart className="h-6 w-6 text-primary" />
   },
   {
     category: 'Tools & IDE',
     skills: ['Postman', 'Ubuntu', 'PyCharm', 'VSCode'],
-    icon: '🛠️'
+    icon: <Terminal className="h-6 w-6 text-primary" />
   }
 ];
 
@@ -75,8 +76,8 @@ const Skills = () => {
           {skillGroups.map((group, index) => (
             <div key={index} className="bg-secondary/30 p-6 rounded-lg hover-card">
               <div className="flex items-center mb-4">
-                <span className="text-3xl mr-3">{group.icon}</span>
-                <h3 className="text-xl font-semibold">{group.category}</h3>
+                {group.icon}
+                <h3 className="text-xl font-semibold ml-3">{group.category}</h3>
               </div>
               <div className="flex flex-wrap gap-2">
                 {group.skills.map((skill, i) => (

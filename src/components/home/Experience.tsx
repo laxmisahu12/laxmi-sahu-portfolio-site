@@ -6,6 +6,18 @@ import { useState } from 'react';
 
 const experiences = [
   {
+    title: 'AI Engineer (Freelancer)',
+    company: 'Outlier.ai',
+    period: 'January 2025 - Present',
+    location: 'Stockholm, Sweden',
+    description: [
+      'Developing and implementing advanced NLP models for content analysis and classification.',
+      'Creating AI-driven recommendation systems to enhance user engagement and content discovery.',
+      'Building and optimizing machine learning pipelines for real-time data processing.',
+      'Implementing transformer-based models for text generation and summarization tasks.'
+    ]
+  },
+  {
     title: 'System Analyst',
     company: 'Bitwise Solutions Pvt. Ltd',
     period: 'July 2024 - December 2024',
@@ -17,25 +29,14 @@ const experiences = [
     ]
   },
   {
-    title: 'Sr. Software Engineer',
+    title: 'Software Engineer',
     company: 'Securly India Private Limited',
-    period: 'May 2020 - May 2023',
+    period: 'March 2019 - May 2023',
     location: 'Pune, India',
     description: [
       'Developed a URL classification module processing 10M+ URLs monthly.',
       'Enhanced legacy code, reducing system errors by 30% and improving performance by 20%.',
-      'Collected offender data from 100+ US counties using Selenium and web scraping techniques.',
-      'Assisted in building a robust database for tracking offenders.'
-    ]
-  },
-  {
-    title: 'Software Engineer',
-    company: 'Securly India Private Limited',
-    period: 'October 2019 - May 2020',
-    location: 'Pune, India',
-    description: [
       'Led ETL project from 5+ sources, resulting in a 60% increase in reporting efficiency.',
-      'Enabled data analysts to generate insights, contributing to a 45% improvement in marketing strategies.',
       'Created an audit reporting system, generating PR reports for 500+ clients, reducing report generation time by 80%.'
     ]
   }

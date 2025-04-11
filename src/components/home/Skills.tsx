@@ -1,24 +1,28 @@
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Code, Database, Server, FileCode, Activity, Cpu, GanttChart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const skills = [
   {
     category: 'Languages',
-    items: ['Python', 'Java', 'SQL']
+    items: ['Python', 'Java', 'SQL'],
+    icon: <Code className="h-6 w-6 text-primary" />
   },
   {
     category: 'Frameworks & Libraries',
-    items: ['PySpark', 'Flask', 'Pandas', 'NumPy']
+    items: ['PySpark', 'Flask', 'Pandas', 'NumPy'],
+    icon: <FileCode className="h-6 w-6 text-primary" />
   },
   {
     category: 'Data & Cloud',
-    items: ['ETL', 'AWS', 'GCP', 'BigQuery']
+    items: ['ETL', 'AWS', 'GCP', 'BigQuery'],
+    icon: <Database className="h-6 w-6 text-primary" />
   },
   {
     category: 'Tools & Technologies',
-    items: ['Tableau', 'Jenkins', 'Selenium', 'Redis']
+    items: ['Tableau', 'Jenkins', 'Selenium', 'Redis'],
+    icon: <Activity className="h-6 w-6 text-primary" />
   }
 ];
 
@@ -30,7 +34,10 @@ const Skills = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 mt-12">
         {skills.map((skill) => (
           <div key={skill.category} className="bg-secondary/30 p-6 rounded-md shadow-sm hover-card border border-border/50">
-            <h3 className="text-lg font-semibold mb-4 text-foreground font-mono">{skill.category}</h3>
+            <div className="flex items-center gap-3 mb-4">
+              {skill.icon}
+              <h3 className="text-lg font-semibold text-foreground font-mono">{skill.category}</h3>
+            </div>
             <div className="flex flex-wrap gap-2">
               {skill.items.map((item) => (
                 <span key={item} className="skill-badge">
