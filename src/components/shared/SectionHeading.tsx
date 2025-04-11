@@ -20,7 +20,7 @@ const SectionHeading = ({
       center && 'text-center',
       className
     )}>
-      <h2 className="section-title">
+      <h2 className="section-title text-primary">
         {title}
       </h2>
       {subtitle && (
