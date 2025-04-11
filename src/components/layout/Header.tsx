@@ -50,7 +50,6 @@ const Header = () => {
     { name: 'Skills', path: '/skills' },
     { name: 'Experience', path: '/experience' },
     { name: 'Projects', path: '/projects' },
-    { name: 'Certifications', path: '/certifications' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -66,7 +65,7 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center font-bold text-xl">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground mr-2">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground mr-2 animate-pulse-slow">
               LS
             </div>
             <span className="hidden sm:block">Laxmi Sahu</span>
@@ -74,11 +73,12 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-6">
-            {navigationLinks.map((link) => (
+            {navigationLinks.map((link, index) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-foreground/80 hover:text-foreground font-medium transition-colors"
+                className="text-foreground/80 hover:text-primary font-medium transition-colors relative after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-primary after:origin-left after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
+                style={{ transitionDelay: `${index * 50}ms` }}
               >
                 {link.name}
               </Link>
@@ -92,6 +92,7 @@ const Header = () => {
               size="icon"
               onClick={toggleDarkMode}
               aria-label="Toggle dark mode"
+              className="transition-transform hover:rotate-45 duration-300"
             >
               {darkMode ? (
                 <Sun className="h-5 w-5" />
@@ -126,7 +127,7 @@ const Header = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className="py-2 text-foreground font-medium transition-colors"
+                className="py-2 text-foreground font-medium transition-colors hover:text-primary"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}

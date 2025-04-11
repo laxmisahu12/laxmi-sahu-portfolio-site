@@ -15,36 +15,36 @@ const About = () => {
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <p className="text-lg mb-6">
+          <p className="text-lg mb-6 animate-[fadeIn_0.5s_ease-out_0.2s_both]">
             With over 7 years of experience in Enterprise Application Development, I specialize in Data Engineering, ETL, Python, GCP and AWS to build scalable, efficient, and high-performance solutions.
           </p>
           
-          <p className="text-lg mb-6">
+          <p className="text-lg mb-6 animate-[fadeIn_0.5s_ease-out_0.4s_both]">
             My expertise spans across designing data pipelines, real-time processing, automation frameworks, and system optimization, which has led to impactful results in various organizations.
           </p>
           
-          <p className="text-lg mb-6">
+          <p className="text-lg mb-6 animate-[fadeIn_0.5s_ease-out_0.6s_both]">
             I am proficient in Agile Methodology & SDLC for full application cycles and I have a strong background in data visualization using tools like Mode Analytics, Tableau, Looker Studio and Elastic Kibana.
           </p>
           
-          <div className="mt-8">
-            <Button asChild>
-              <Link to="/about" className="flex items-center gap-2">
+          <div className="mt-8 animate-[fadeIn_0.5s_ease-out_0.8s_both]">
+            <Button asChild className="transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
+              <Link to="/about" className="flex items-center gap-2 group">
                 Learn More About Me
-                <ArrowRight size={18} />
+                <ArrowRight size={18} className="transform transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </Button>
           </div>
         </div>
         
-        <div className="relative">
+        <div className="relative animate-float">
           <div className="relative max-w-sm mx-auto lg:mx-0">
             <div className="relative z-10 overflow-hidden rounded-md border-2 border-primary/20">
               <AspectRatio ratio={1/1} className="bg-secondary/30">
                 <img 
                   src="/lovable-uploads/8cd2f2ff-0d22-4565-ba19-026f6395f405.png" 
                   alt="Laxmi Sahu"
-                  className="object-cover h-full w-full brightness-90 contrast-105"
+                  className="object-cover h-full w-full brightness-90 contrast-105 transition-all duration-500 hover:brightness-100 hover:contrast-100"
                 />
               </AspectRatio>
             </div>
