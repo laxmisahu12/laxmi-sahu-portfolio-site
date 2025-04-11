@@ -1,9 +1,9 @@
-
 import PageBanner from '@/components/shared/PageBanner';
 import SectionHeading from '@/components/shared/SectionHeading';
 import ContactIcons from '@/components/shared/ContactIcons';
 import { Helmet } from 'react-helmet-async';
 import { Briefcase, GraduationCap } from 'lucide-react';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
 
 const About = () => {
   return (
@@ -44,68 +44,75 @@ const About = () => {
               <p>
                 I have extensive expertise in Data Visualization tools like Mode Analytics, Tableau, Looker Studio and Elastic Kibana for actionable insights and reporting.
               </p>
-              <p>
-                I have a proven ability to design and implement core framework components, container libraries, and scalable backend systems.
-              </p>
-              <p>
-                I am passionate about AI, Machine Learning, and Data-Driven Decision Making—exploring ways to leverage AI in data processing, predictive analytics, and automation.
-              </p>
-              <p>
-                Currently based in Stockholm, Sweden, I am open to opportunities that can leverage my skills and experience.
-              </p>
-            </div>
-            
-            <div className="mt-8">
-              <ContactIcons />
+              
+              <div className="mt-8">
+                <ContactIcons />
+              </div>
             </div>
           </div>
           
-          <div>
-            <SectionHeading title="Education & Experience" />
-            
-            <div className="mb-8">
-              <div className="flex items-center gap-3 mb-4">
-                <GraduationCap size={24} className="text-primary" />
-                <h3 className="text-xl font-semibold">Education</h3>
+          <div className="space-y-8">
+            <div className="relative max-w-sm mx-auto lg:ml-auto lg:mr-0">
+              <div className="relative z-10 overflow-hidden rounded-md border-2 border-primary/20">
+                <AspectRatio ratio={1/1} className="bg-secondary/30">
+                  <img 
+                    src="/lovable-uploads/8cd2f2ff-0d22-4565-ba19-026f6395f405.png" 
+                    alt="Laxmi Sahu"
+                    className="object-cover h-full w-full brightness-90 contrast-105"
+                  />
+                </AspectRatio>
               </div>
-              
-              <div className="bg-secondary/30 p-6 rounded-lg hover-card mb-4">
-                <h4 className="text-lg font-medium">B.E. in Computer Science & Engineering</h4>
-                <p className="text-primary">Sanghavi Innovative Academy, RGTU, Indore</p>
-                <p className="text-muted-foreground mt-1">August 2010 – May 2014</p>
-                <p className="mt-2">Indore, India</p>
-              </div>
+              {/* Decorative frame */}
+              <div className="absolute -top-4 -right-4 border-2 border-primary w-full h-full rounded-md z-0"></div>
             </div>
             
             <div>
-              <div className="flex items-center gap-3 mb-4">
-                <Briefcase size={24} className="text-primary" />
-                <h3 className="text-xl font-semibold">Experience Timeline</h3>
+              <SectionHeading title="Education & Experience" />
+              
+              <div className="mb-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <GraduationCap size={24} className="text-primary" />
+                  <h3 className="text-xl font-semibold">Education</h3>
+                </div>
+                
+                <div className="bg-secondary/30 p-6 rounded-lg hover-card mb-4">
+                  <h4 className="text-lg font-medium">B.E. in Computer Science & Engineering</h4>
+                  <p className="text-primary">Sanghavi Innovative Academy, RGTU, Indore</p>
+                  <p className="text-muted-foreground mt-1">August 2010 – May 2014</p>
+                  <p className="mt-2">Indore, India</p>
+                </div>
               </div>
               
-              <div className="space-y-6">
-                <div className="timeline-item">
-                  <h4 className="text-lg font-medium">System Analyst</h4>
-                  <p className="text-primary">Bitwise Solutions Pvt. Ltd</p>
-                  <p className="text-muted-foreground">July 2024 - December 2024 | Pune, India</p>
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <Briefcase size={24} className="text-primary" />
+                  <h3 className="text-xl font-semibold">Experience Timeline</h3>
                 </div>
                 
-                <div className="timeline-item">
-                  <h4 className="text-lg font-medium">Sr. Software Engineer</h4>
-                  <p className="text-primary">Securly India Private Limited</p>
-                  <p className="text-muted-foreground">May 2020 - May 2023 | Pune, India</p>
-                </div>
-                
-                <div className="timeline-item">
-                  <h4 className="text-lg font-medium">Software Engineer</h4>
-                  <p className="text-primary">Securly India Private Limited</p>
-                  <p className="text-muted-foreground">October 2019 - May 2020 | Pune, India</p>
-                </div>
-                
-                <div className="timeline-item">
-                  <h4 className="text-lg font-medium">Full Stack & Android Developer</h4>
-                  <p className="text-primary">SPEGI Technologies</p>
-                  <p className="text-muted-foreground">December 2015 - May 2018 | Indore, India</p>
+                <div className="space-y-6">
+                  <div className="timeline-item">
+                    <h4 className="text-lg font-medium">System Analyst</h4>
+                    <p className="text-primary">Bitwise Solutions Pvt. Ltd</p>
+                    <p className="text-muted-foreground">July 2024 - December 2024 | Pune, India</p>
+                  </div>
+                  
+                  <div className="timeline-item">
+                    <h4 className="text-lg font-medium">Sr. Software Engineer</h4>
+                    <p className="text-primary">Securly India Private Limited</p>
+                    <p className="text-muted-foreground">May 2020 - May 2023 | Pune, India</p>
+                  </div>
+                  
+                  <div className="timeline-item">
+                    <h4 className="text-lg font-medium">Software Engineer</h4>
+                    <p className="text-primary">Securly India Private Limited</p>
+                    <p className="text-muted-foreground">October 2019 - May 2020 | Pune, India</p>
+                  </div>
+                  
+                  <div className="timeline-item">
+                    <h4 className="text-lg font-medium">Full Stack & Android Developer</h4>
+                    <p className="text-primary">SPEGI Technologies</p>
+                    <p className="text-muted-foreground">December 2015 - May 2018 | Indore, India</p>
+                  </div>
                 </div>
               </div>
             </div>
