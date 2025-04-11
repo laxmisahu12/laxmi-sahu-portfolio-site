@@ -5,33 +5,30 @@ import { Moon, Sun, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Initialize theme from localStorage or default to dark
+  // Toggle dark mode
   useEffect(() => {
-    const isDark = localStorage.getItem('darkMode') !== 'false';
+    const isDark = localStorage.getItem('darkMode') === 'true';
     setDarkMode(isDark);
-    updateTheme(isDark);
-  }, []);
-
-  // Apply theme changes to DOM
-  const updateTheme = (isDark: boolean) => {
     if (isDark) {
       document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
     } else {
       document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
     }
-  };
+  }, []);
 
   const toggleDarkMode = () => {
     const newDarkMode = !darkMode;
     setDarkMode(newDarkMode);
     localStorage.setItem('darkMode', String(newDarkMode));
-    updateTheme(newDarkMode);
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   };
 
   // Handle scroll event for header styling
@@ -68,7 +65,7 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center font-bold text-xl">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground mr-2 hover:animate-pulse-slow transition-all duration-300 hover:scale-105">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground mr-2 animate-pulse-slow">
               LS
             </div>
             <span className="hidden sm:block">Laxmi Sahu</span>
@@ -98,9 +95,9 @@ const Header = () => {
               className="transition-transform hover:rotate-45 duration-300"
             >
               {darkMode ? (
-                <Sun className="h-5 w-5 animate-spin-slow" />
+                <Sun className="h-5 w-5" />
               ) : (
-                <Moon className="h-5 w-5 animate-spin-slow" />
+                <Moon className="h-5 w-5" />
               )}
             </Button>
 
