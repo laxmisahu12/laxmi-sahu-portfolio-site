@@ -1,32 +1,18 @@
 
-import { cn } from '@/lib/utils';
+import React from 'react';
 
 interface SectionHeadingProps {
   title: string;
   subtitle?: string;
-  center?: boolean;
   className?: string;
 }
 
-const SectionHeading = ({ 
-  title, 
-  subtitle, 
-  center = false,
-  className 
-}: SectionHeadingProps) => {
+const SectionHeading: React.FC<SectionHeadingProps> = ({ title, subtitle, className = '' }) => {
   return (
-    <div className={cn(
-      'mb-12', 
-      center && 'text-center',
-      className
-    )}>
-      <h2 className="section-title text-primary">
-        {title}
-      </h2>
+    <div className={`mb-8 ${className}`}>
+      <h2 className="text-2xl md:text-3xl font-bold mb-2">{title}</h2>
       {subtitle && (
-        <p className="mt-4 text-lg text-muted-foreground max-w-3xl">
-          {subtitle}
-        </p>
+        <p className="text-muted-foreground">{subtitle}</p>
       )}
     </div>
   );

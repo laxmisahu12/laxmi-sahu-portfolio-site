@@ -1,7 +1,9 @@
 
+import { useState } from 'react';
 import PageBanner from '@/components/shared/PageBanner';
-import SectionHeading from '@/components/shared/SectionHeading';
 import { Helmet } from 'react-helmet-async';
+import { ExternalLink, Github } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const projects = [
   {
@@ -9,11 +11,6 @@ const projects = [
     period: 'July 2024 – Dec 2024',
     description: 'A comprehensive automation framework designed to streamline non-functional requirements testing by generating JMX files from Postman Collections, enabling seamless integration with JMeter and reducing manual testing efforts by 90%.',
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    achievements: [
-      'Implemented a module to automate the generation of JMX files from Postman Collection enabling seamless integration with JMeter',
-      'Integrated the solution into the Jenkins pipeline, reducing manual work by 90%',
-      'Utilized Kafka for real-time messaging, Splunk for reporting and AWS S3 for cloud storage'
-    ],
     techStack: ['Python', 'Kafka', 'JMeter', 'AWS S3', 'Jenkins', 'Splunk', 'Postman']
   },
   {
@@ -21,10 +18,6 @@ const projects = [
     period: 'Sept 2021 – May 2023',
     description: 'A high-performance domain and URL classification system that processes over 10 million URLs monthly, categorizing content for content filtering and security systems while ensuring high accuracy and minimal false positives.',
     image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    achievements: [
-      'Developed a module for domain and URL classification, processing over 10 million URLs monthly',
-      'Enhanced legacy code, reducing system errors by 30% and improving performance by 20%'
-    ],
     techStack: ['Python', 'Web Scraping', 'Elasticsearch', 'Redis', 'AWS ASG', 'AWS Redshift', 'AWS S3', 'AWS Cloud Watch', 'Slack API', 'Email API']
   },
   {
@@ -32,10 +25,6 @@ const projects = [
     period: 'Oct 2019 – May 2022',
     description: 'An end-to-end ETL pipeline system that extracts, transforms, and loads data from multiple sources into analytical databases, providing actionable insights that led to a 45% improvement in marketing and sales strategies.',
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    achievements: [
-      'Led ETL project, extracting and transforming data from 5+ sources, resulting in a 60% increase in reporting efficiency',
-      'Enabled data analysts to generate insights, contributing to a 45% improvement in marketing and sales strategies'
-    ],
     techStack: ['Python', 'Pandas', 'Numpy', 'Elasticsearch', 'Redis', 'AWS Redshift', 'MySQL', 'AWS S3', 'Slack API', 'Email API']
   },
   {
@@ -43,10 +32,6 @@ const projects = [
     period: 'Nov 2020 – Dec 2021',
     description: 'A data collection and tracking system that aggregates offender data from over 100 US counties using advanced web scraping techniques, building a comprehensive database for ongoing monitoring and analysis.',
     image: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    achievements: [
-      'Collected offender data from 100+ US counties using Selenium and web scraping techniques',
-      'Assisted in building a robust database for tracking offenders'
-    ],
     techStack: ['Python', 'Web Scraping', 'Selenium', 'Pandas', 'Numpy', 'MySQL', 'API calls', 'Postman']
   },
   {
@@ -54,15 +39,13 @@ const projects = [
     period: 'Mar 2019 – Dec 2019',
     description: 'An enterprise-grade audit reporting system that generates PR reports for over 500 clients, reducing report generation time by 80% while ensuring accuracy and compliance with organizational standards.',
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    achievements: [
-      'Created an audit reporting system, generating PR reports for 500+ clients, reducing report generation time by 80%',
-      'Led project development, ensuring zero critical issues post-deployment'
-    ],
     techStack: ['Python', 'Flask', 'Pandas', 'Numpy', 'Matplotlib', 'Seaborn', 'Elasticsearch', 'AWS Redshift', 'Slack API']
   }
 ];
 
 const Projects = () => {
+  const [activeProject, setActiveProject] = useState(0);
+  
   return (
     <>
       <Helmet>
@@ -76,49 +59,60 @@ const Projects = () => {
       />
       
       <div className="section-container">
-        <SectionHeading 
-          title="Featured Projects" 
-          subtitle="Highlighting some of my most impactful work"
-          className="section-fade-in"
-        />
-        
-        <div className="space-y-16 section-fade-in">
-          {projects.map((project, index) => (
-            <div key={index} className="bg-secondary/30 rounded-lg overflow-hidden border border-border/50 hover-card">
-              <div className="md:grid md:grid-cols-12 gap-0">
-                <div className="md:col-span-5 overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover md:h-full" 
-                  />
-                </div>
-                
-                <div className="md:col-span-7 p-6">
-                  <div className="font-mono text-sm text-primary mb-1">{project.period}</div>
-                  <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
-                  <p className="text-muted-foreground mb-4">{project.description}</p>
-                  
-                  <div className="bg-background/50 p-4 rounded-md mb-4">
-                    <h4 className="font-medium mb-2 text-sm">Key Achievements:</h4>
-                    <ul className="list-disc pl-5 space-y-1 text-sm">
-                      {project.achievements.map((achievement, i) => (
-                        <li key={i}>{achievement}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {project.techStack.map((tech, i) => (
-                      <span key={i} className="skill-badge text-xs">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+        <div className="grid grid-cols-12 gap-8">
+          {/* Project Navigation */}
+          <div className="col-span-12 md:col-span-4 lg:col-span-3">
+            <div className="border-l-2 border-muted">
+              {projects.map((project, idx) => (
+                <button
+                  key={idx}
+                  className={`block text-left pl-4 py-3 mb-1 hover:text-primary transition-all border-l-2 -ml-[2px] ${
+                    activeProject === idx 
+                      ? 'text-primary border-primary' 
+                      : 'border-transparent text-muted-foreground'
+                  }`}
+                  onClick={() => setActiveProject(idx)}
+                >
+                  <div className="font-mono text-xs">{project.period}</div>
+                  <div className="font-medium">{project.title}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+          
+          {/* Project Details */}
+          <div className="col-span-12 md:col-span-8 lg:col-span-9">
+            <div className="bg-secondary/30 rounded-lg p-6 border border-border/50 hover-card">
+              <h3 className="text-2xl font-bold mb-2 text-primary">
+                {projects[activeProject].title}
+              </h3>
+              
+              <div className="text-sm text-muted-foreground mb-4">
+                {projects[activeProject].period}
+              </div>
+              
+              <div className="relative mb-6 overflow-hidden rounded-lg h-60 lg:h-80 group">
+                <img 
+                  src={projects[activeProject].image} 
+                  alt={projects[activeProject].title} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                />
+                <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              <p className="text-foreground mb-6">
+                {projects[activeProject].description}
+              </p>
+              
+              <div className="flex flex-wrap gap-2 mb-6">
+                {projects[activeProject].techStack.map((tech, i) => (
+                  <span key={i} className="skill-badge">
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </>

@@ -12,7 +12,6 @@ import About from "./pages/About";
 import Skills from "./pages/Skills";
 import Experience from "./pages/Experience";
 import Projects from "./pages/Projects";
-import Certifications from "./pages/Certifications";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import SideNav from "./components/layout/SideNav";
@@ -37,7 +36,6 @@ const App = () => (
                 <Route path="skills" element={<Skills />} />
                 <Route path="experience" element={<Experience />} />
                 <Route path="projects" element={<Projects />} />
-                <Route path="certifications" element={<Certifications />} />
                 <Route path="contact" element={<Contact />} />
                 <Route path="*" element={<NotFound />} />
               </Route>

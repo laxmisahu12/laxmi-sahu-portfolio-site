@@ -1,35 +1,13 @@
 
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
-  const [darkMode, setDarkMode] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
-  // Toggle dark mode
-  useEffect(() => {
-    const isDark = localStorage.getItem('darkMode') === 'true';
-    setDarkMode(isDark);
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  const toggleDarkMode = () => {
-    const newDarkMode = !darkMode;
-    setDarkMode(newDarkMode);
-    localStorage.setItem('darkMode', String(newDarkMode));
-    if (newDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  };
+  const location = useLocation();
 
   // Handle scroll event for header styling
   useEffect(() => {
@@ -50,7 +28,6 @@ const Header = () => {
     { name: 'Skills', path: '/skills' },
     { name: 'Experience', path: '/experience' },
     { name: 'Projects', path: '/projects' },
-    { name: 'Certifications', path: '/certifications' },
     { name: 'Contact', path: '/contact' },
   ];
 
@@ -66,10 +43,10 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center font-bold text-xl">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground mr-2">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground mr-2 transition-transform hover:scale-110">
               LS
             </div>
-            <span className="hidden sm:block">Laxmi Sahu</span>
+            <span className="hidden sm:block hover:text-primary transition-colors">Laxmi Sahu</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -78,7 +55,11 @@ const Header = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className="text-foreground/80 hover:text-foreground font-medium transition-colors"
+                className={`font-medium transition-colors hover:text-primary ${
+                  location.pathname === link.path 
+                    ? 'text-primary' 
+                    : 'text-foreground/80'
+                }`}
               >
                 {link.name}
               </Link>
@@ -87,24 +68,11 @@ const Header = () => {
 
           {/* Actions */}
           <div className="flex items-center space-x-2">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleDarkMode}
-              aria-label="Toggle dark mode"
-            >
-              {darkMode ? (
-                <Sun className="h-5 w-5" />
-              ) : (
-                <Moon className="h-5 w-5" />
-              )}
-            </Button>
-
             {/* Mobile menu button */}
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden"
+              className="md:hidden hover:text-primary hover:bg-primary/10"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -126,7 +94,11 @@ const Header = () => {
               <Link
                 key={link.name}
                 to={link.path}
-                className="py-2 text-foreground font-medium transition-colors"
+                className={`py-2 font-medium transition-colors hover:text-primary ${
+                  location.pathname === link.path 
+                    ? 'text-primary' 
+                    : 'text-foreground'
+                }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.name}

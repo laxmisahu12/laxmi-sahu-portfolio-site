@@ -12,7 +12,7 @@ const Hero = () => {
         <div className="max-w-3xl">
           <div className="text-primary mb-5 font-mono">Hi, my name is</div>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4">
-            <span className="text-foreground block mb-2">Laxmi Sahu.</span>
+            <span className="text-foreground block mb-2 hover:text-primary transition-colors">Laxmi Sahu.</span>
             <span className="text-muted-foreground block">I build data solutions.</span>
           </h1>
           
@@ -23,16 +23,17 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-wrap gap-4 mb-8">
-            <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10">
-              <Link to="/contact" className="font-mono text-sm">
+            <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary/10 group">
+              <Link to="/contact" className="font-mono text-sm group-hover:text-primary">
                 Get In Touch
+                <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
             
-            <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary/10">
-              <a href="/laxmi-sahu-resume.pdf" download className="font-mono text-sm">
+            <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary/10 group">
+              <a href="/laxmi-sahu-resume.pdf" download className="font-mono text-sm group-hover:text-primary">
                 Resume
-                <Download size={16} className="ml-2" />
+                <Download size={16} className="ml-2 group-hover:translate-y-1 transition-transform" />
               </a>
             </Button>
           </div>
