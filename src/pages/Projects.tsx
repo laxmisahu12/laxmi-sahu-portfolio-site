@@ -70,88 +70,73 @@ const Projects = () => {
       <div className="section-container">
         <div className="space-y-32">
           {projects.map((project, index) => (
-            <div 
-              key={index} 
-              className={`relative grid md:grid-cols-12 gap-4 items-center ${
-                index % 2 === 0 ? '' : 'md:text-right'
-              }`}
-            >
-              {/* Project Image - Always visible on small screens, conditional on larger screens */}
-              <div className={`md:col-span-7 relative group ${
-                index % 2 === 0 
-                  ? 'md:order-2' 
-                  : 'md:order-1'
-              }`}>
-                <div className="w-full h-full overflow-hidden rounded-lg relative">
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block"
-                  >
-                    <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
-                    />
-                  </a>
+            <div key={index} className="relative">
+              <div className="flex flex-col md:flex-row gap-8 items-start">
+                {/* Project Content */}
+                <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:order-1' : 'md:order-2'}`}>
+                  <div className="space-y-4">
+                    <p className="text-primary font-mono">Featured Project</p>
+                    <h3 className="text-2xl font-bold hover:text-primary transition-colors">
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        {project.title}
+                      </a>
+                    </h3>
+                    
+                    <div className="bg-secondary/30 p-6 rounded-lg shadow-md hover-card">
+                      <p className="text-foreground">{project.description}</p>
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-2 text-sm">
+                      {project.techStack.map((tech, i) => (
+                        <span key={i} className="skill-badge">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <div className="flex items-center gap-4">
+                      {project.github && (
+                        <a 
+                          href={project.github} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-foreground hover:text-primary transition-colors"
+                          aria-label={`View ${project.title} on GitHub`}
+                        >
+                          <Github size={20} />
+                        </a>
+                      )}
+                      {project.link && (
+                        <a 
+                          href={project.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="text-foreground hover:text-primary transition-colors"
+                          aria-label={`Visit ${project.title} website`}
+                        >
+                          <ExternalLink size={20} />
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              </div>
-              
-              {/* Project Content */}
-              <div className={`md:col-span-7 ${
-                index % 2 === 0 
-                  ? 'md:order-1 md:text-left md:pr-8 md:col-start-1 md:col-end-8' 
-                  : 'md:order-2 md:text-right md:pl-8 md:col-start-6 md:col-end-13'
-              }`}>
-                <div className="space-y-4">
-                  <p className="text-primary font-mono">Featured Project</p>
-                  <h3 className="text-2xl font-bold hover:text-primary transition-colors">
-                    <a href={project.link} target="_blank" rel="noopener noreferrer">
-                      {project.title}
+                
+                {/* Project Image */}
+                <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:order-2' : 'md:order-1'}`}>
+                  <div className="w-full h-full overflow-hidden rounded-lg relative group">
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="block"
+                    >
+                      <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
+                      />
                     </a>
-                  </h3>
-                  
-                  <div className="bg-secondary/30 p-6 rounded-lg shadow-md hover-card">
-                    <p className="text-foreground">{project.description}</p>
-                  </div>
-                  
-                  <div className={`flex flex-wrap gap-2 text-sm ${
-                    index % 2 === 0 ? '' : 'md:justify-end'
-                  }`}>
-                    {project.techStack.map((tech, i) => (
-                      <span key={i} className="skill-badge">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className={`flex items-center gap-4 ${
-                    index % 2 === 0 ? '' : 'md:justify-end'
-                  }`}>
-                    {project.github && (
-                      <a 
-                        href={project.github} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-foreground hover:text-primary transition-colors"
-                        aria-label={`View ${project.title} on GitHub`}
-                      >
-                        <Github size={20} />
-                      </a>
-                    )}
-                    {project.link && (
-                      <a 
-                        href={project.link} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="text-foreground hover:text-primary transition-colors"
-                        aria-label={`Visit ${project.title} website`}
-                      >
-                        <ExternalLink size={20} />
-                      </a>
-                    )}
                   </div>
                 </div>
               </div>
