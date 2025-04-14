@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -31,24 +32,20 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Using EmailJS to send email
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          service_id: 'service_1j2vfij',
-          template_id: 'template_jjnz9y8',
-          user_id: 'GZz7XYjCh2mFjhcQL',
-          template_params: {
-            from_name: formData.name,
-            reply_to: formData.email,
-            subject: `Portfolio Contact: ${formData.subject}`,
-            message: formData.message
-          }
-        })
-      });
+      // Using EmailJS to send email with updated service IDs
+      const templateParams = {
+        from_name: formData.name,
+        reply_to: formData.email,
+        subject: `Portfolio Contact: ${formData.subject}`,
+        message: formData.message
+      };
+
+      const response = await emailjs.send(
+        'service_7k1zrwo', // Updated service ID
+        'template_h6c09dr', // Updated template ID
+        templateParams,
+        'rbJDmgr5qIf0cNz-U' // Updated user ID
+      );
 
       if (response.status === 200) {
         toast({
