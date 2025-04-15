@@ -10,7 +10,7 @@ interface SectionHeadingProps {
 const SectionHeading: React.FC<SectionHeadingProps> = ({ title, subtitle, className = '' }) => {
   return (
     <div className={`mb-8 ${className}`}>
-      <h2 className="text-2xl md:text-3xl font-bold mb-2 text-primary">{title}</h2>
+      <h2 className="text-2xl md:text-3xl font-bold mb-2 hover:text-primary transition-colors">{title}</h2>
       {subtitle && (
         <p className="text-muted-foreground">{subtitle}</p>
       )}

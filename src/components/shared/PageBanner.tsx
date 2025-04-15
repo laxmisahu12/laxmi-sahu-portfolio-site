@@ -11,7 +11,8 @@ const PageBanner: React.FC<PageBannerProps> = ({ title, subtitle }) => {
     <section className="relative bg-background pt-32 pb-16">
       <div className="container mx-auto px-4 text-center max-w-3xl">
         <div className="space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary">{title}</h1>
+          <div className="text-primary font-mono">03.</div>
+          <h1 className="text-4xl md:text-5xl font-bold">{title}</h1>
           {subtitle && (
             <p className="text-muted-foreground text-lg">{subtitle}</p>
           )}
