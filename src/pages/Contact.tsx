@@ -32,7 +32,7 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Using EmailJS to send email with updated service IDs
+      // EmailJS configuration
       const templateParams = {
         from_name: formData.name,
         reply_to: formData.email,
@@ -40,12 +40,15 @@ const Contact = () => {
         message: formData.message
       };
 
+      await emailjs.init("rbJDmgr5qIf0cNz-U"); // Initialize with public key
+
       const response = await emailjs.send(
-        'service_7k1zrwo', // Updated service ID
-        'template_h6c09dr', // Updated template ID
-        templateParams,
-        'rbJDmgr5qIf0cNz-U' // Updated user ID
+        'service_7k1zrwo', 
+        'template_h6c09dr', 
+        templateParams
       );
+
+      console.log('Email sent successfully:', response);
 
       if (response.status === 200) {
         toast({
