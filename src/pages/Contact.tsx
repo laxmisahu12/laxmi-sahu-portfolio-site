@@ -8,43 +8,81 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, ArrowRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import emailjs from 'emailjs-com';
+import { z } from 'zod';
+
+const contactSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters long" }),
+  email: z.string().email({ message: "Please enter a valid email address" }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters long" }),
+});
 
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
     message: ''
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error for this field when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const validateForm = () => {
+    try {
+      contactSchema.parse(formData);
+      setErrors({});
+      return true;
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        const newErrors: Record<string, string> = {};
+        err.errors.forEach(error => {
+          if (error.path[0]) {
+            newErrors[error.path[0].toString()] = error.message;
+          }
+        });
+        setErrors(newErrors);
+      }
+      return false;
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      toast({
+        title: "Validation Error",
+        description: "Please check the form for errors",
+        variant: "destructive"
+      });
+      return;
+    }
+    
     setIsSubmitting(true);
     
     try {
-      // Using EmailJS to send email with updated service IDs
       const templateParams = {
         from_name: formData.name,
         reply_to: formData.email,
-        subject: `Portfolio Contact: ${formData.subject}`,
         message: formData.message
       };
 
       const response = await emailjs.send(
-        'service_7k1zrwo', // Updated service ID
-        'template_h6c09dr', // Updated template ID
+        'service_7k1zrwo',
+        'template_h6c09dr',
         templateParams,
-        'rbJDmgr5qIf0cNz-U' // Updated user ID
+        'rbJDmgr5qIf0cNz-U'
       );
 
       if (response.status === 200) {
@@ -57,7 +95,6 @@ const Contact = () => {
         setFormData({
           name: '',
           email: '',
-          subject: '',
           message: ''
         });
       } else {
@@ -89,13 +126,13 @@ const Contact = () => {
       
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 section-fade-in">
-          <div>
-            <h2 className="text-2xl font-bold mb-8">Get In Touch</h2>
+          <div className="bg-secondary/30 p-8 rounded-lg border border-border/50">
+            <h2 className="text-2xl font-bold mb-8 text-primary">Get In Touch</h2>
             
             <div className="space-y-6 mb-8">
               <div className="flex items-start group">
-                <div className="mr-4 mt-1 text-muted-foreground group-hover:text-primary transition-colors">
-                  <Mail className="" size={24} />
+                <div className="mr-4 mt-1 text-primary">
+                  <Mail size={24} />
                 </div>
                 <div>
                   <h3 className="text-lg font-medium mb-1 group-hover:text-primary transition-colors">Email</h3>
@@ -105,8 +142,8 @@ const Contact = () => {
               </div>
               
               <div className="flex items-start group">
-                <div className="mr-4 mt-1 text-muted-foreground group-hover:text-primary transition-colors">
-                  <Phone className="" size={24} />
+                <div className="mr-4 mt-1 text-primary">
+                  <Phone size={24} />
                 </div>
                 <div>
                   <h3 className="text-lg font-medium mb-1 group-hover:text-primary transition-colors">Phone</h3>
@@ -116,8 +153,8 @@ const Contact = () => {
               </div>
               
               <div className="flex items-start group">
-                <div className="mr-4 mt-1 text-muted-foreground group-hover:text-primary transition-colors">
-                  <MapPin className="" size={24} />
+                <div className="mr-4 mt-1 text-primary">
+                  <MapPin size={24} />
                 </div>
                 <div>
                   <h3 className="text-lg font-medium mb-1 group-hover:text-primary transition-colors">Location</h3>
@@ -133,75 +170,60 @@ const Contact = () => {
             </div>
           </div>
           
-          <div>
-            <h2 className="text-2xl font-bold mb-8">Send Message</h2>
+          <div className="bg-secondary/30 p-8 rounded-lg border border-border/50">
+            <h2 className="text-2xl font-bold mb-8 text-primary">Send Message</h2>
             
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Your Name</Label>
-                  <Input 
-                    id="name" 
-                    name="name" 
-                    value={formData.name} 
-                    onChange={handleChange} 
-                    placeholder="John Doe" 
-                    required 
-                    className="hover:border-primary focus:border-primary"
-                  />
-                </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email">Your Email</Label>
-                  <Input 
-                    id="email" 
-                    name="email" 
-                    type="email" 
-                    value={formData.email} 
-                    onChange={handleChange} 
-                    placeholder="john@example.com" 
-                    required 
-                    className="hover:border-primary focus:border-primary"
-                  />
-                </div>
-              </div>
-              
               <div className="space-y-2">
-                <Label htmlFor="subject">Subject</Label>
+                <Label htmlFor="name" className="text-foreground">Your Name</Label>
                 <Input 
-                  id="subject" 
-                  name="subject" 
-                  value={formData.subject} 
+                  id="name" 
+                  name="name" 
+                  value={formData.name} 
                   onChange={handleChange} 
-                  placeholder="Project Discussion" 
-                  required 
-                  className="hover:border-primary focus:border-primary"
+                  placeholder="John Doe" 
+                  className="border-border/50 hover:border-primary focus:border-primary bg-background/50"
                 />
+                {errors.name && <p className="text-destructive text-sm">{errors.name}</p>}
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
+                <Label htmlFor="email" className="text-foreground">Your Email</Label>
+                <Input 
+                  id="email" 
+                  name="email" 
+                  type="email" 
+                  value={formData.email} 
+                  onChange={handleChange} 
+                  placeholder="john@example.com" 
+                  className="border-border/50 hover:border-primary focus:border-primary bg-background/50"
+                />
+                {errors.email && <p className="text-destructive text-sm">{errors.email}</p>}
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="message" className="text-foreground">Message</Label>
                 <Textarea 
                   id="message" 
                   name="message" 
                   value={formData.message} 
                   onChange={handleChange} 
                   placeholder="Your message here..." 
-                  className="min-h-[150px] hover:border-primary focus:border-primary" 
-                  required 
+                  className="min-h-[150px] border-border/50 hover:border-primary focus:border-primary bg-background/50" 
                 />
+                {errors.message && <p className="text-destructive text-sm">{errors.message}</p>}
               </div>
               
               <Button 
                 type="submit" 
                 disabled={isSubmitting}
-                className="w-full md:w-auto group"
+                className="group w-full bg-primary text-primary-foreground hover:bg-primary/80"
               >
                 {isSubmitting ? 'Sending...' : (
-                  <>
+                  <span className="flex items-center">
                     Send Message
-                    <Send size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                  </>
+                    <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 )}
               </Button>
             </form>
