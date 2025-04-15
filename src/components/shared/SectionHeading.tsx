@@ -12,7 +12,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({ title, subtitle, classN
     <div className={`mb-8 ${className}`}>
       <h2 className="text-2xl md:text-3xl font-bold mb-2 text-primary">{title}</h2>
       {subtitle && (
-        <p className="text-light-slate">{subtitle}</p>
+        <p className="text-muted-foreground">{subtitle}</p>
       )}
     </div>
   );
