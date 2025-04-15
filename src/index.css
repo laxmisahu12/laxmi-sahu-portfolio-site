@@ -1,5 +1,7 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* SF Mono is not available on Google Fonts, so we'll use a similar monospace font like Fira Code */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,83 +9,93 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222.2 84% 4.9%;
+    --navy: 222 36% 17%;
+    --dark-navy: 222 47% 11%;
+    --light-navy: 222 36% 22%;
+    
+    --slate: 225 20% 60%;
+    --light-slate: 225 30% 75%;
+    --lightest-slate: 225 40% 90%;
+    
+    --green: 172 80% 60%;
+    
+    --background: var(--navy);
+    --foreground: var(--lightest-slate);
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: var(--light-navy);
+    --card-foreground: var(--lightest-slate);
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: var(--light-navy);
+    --popover-foreground: var(--lightest-slate);
 
-    --primary: 172 80% 60%; /* Teal color (#64ffda) */
-    --primary-foreground: 210 40% 98%;
+    --primary: var(--green);
+    --primary-foreground: var(--dark-navy);
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: var(--light-navy);
+    --secondary-foreground: var(--lightest-slate);
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: var(--light-navy);
+    --muted-foreground: var(--slate);
 
-    --accent: 172 80% 60%; /* Teal accent color */
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: var(--green);
+    --accent-foreground: var(--dark-navy);
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: var(--lightest-slate);
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 172 80% 60%;
+    --border: var(--light-navy);
+    --input: var(--light-navy);
+    --ring: var(--green);
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: var(--dark-navy);
+    --sidebar-foreground: var(--light-slate);
+    --sidebar-primary: var(--green);
+    --sidebar-primary-foreground: var(--dark-navy);
+    --sidebar-accent: var(--light-navy);
+    --sidebar-accent-foreground: var(--lightest-slate);
+    --sidebar-border: var(--light-navy);
+    --sidebar-ring: var(--green);
   }
 
   .dark {
-    --background: 221 70% 10%; /* Darker navy background (#0a192f) */
-    --foreground: 210 40% 98%; /* Light slate for text */
+    --background: hsl(var(--navy));
+    --foreground: hsl(var(--lightest-slate));
 
-    --card: 221 70% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: hsl(var(--light-navy));
+    --card-foreground: hsl(var(--lightest-slate));
 
-    --popover: 221 70% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: hsl(var(--light-navy));
+    --popover-foreground: hsl(var(--lightest-slate));
 
-    --primary: 172 80% 60%; /* Teal color (#64ffda) */
-    --primary-foreground: 221 70% 10%;
+    --primary: hsl(var(--green));
+    --primary-foreground: hsl(var(--dark-navy));
 
-    --secondary: 226 22% 20%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: hsl(var(--light-navy));
+    --secondary-foreground: hsl(var(--lightest-slate));
 
-    --muted: 226 22% 20%;
-    --muted-foreground: 215 20.2% 70%;
+    --muted: hsl(var(--light-navy));
+    --muted-foreground: hsl(var(--slate));
 
-    --accent: 172 80% 60%; /* Teal accent color */
-    --accent-foreground: 210 40% 98%;
+    --accent: hsl(var(--green));
+    --accent-foreground: hsl(var(--dark-navy));
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: hsl(var(--lightest-slate));
 
-    --border: 226 22% 20%;
-    --input: 226 22% 20%;
-    --ring: 172 80% 60%;
+    --border: hsl(var(--light-navy));
+    --input: hsl(var(--light-navy));
+    --ring: hsl(var(--green));
 
-    --sidebar-background: 221 70% 10%; /* Darker navy */
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 172 80% 60%; /* Teal */
-    --sidebar-primary-foreground: 221 70% 10%;
-    --sidebar-accent: 226 22% 20%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 226 22% 20%;
-    --sidebar-ring: 172 80% 60%;
+    --sidebar-background: hsl(var(--dark-navy));
+    --sidebar-foreground: hsl(var(--light-slate));
+    --sidebar-primary: hsl(var(--green));
+    --sidebar-primary-foreground: hsl(var(--dark-navy));
+    --sidebar-accent: hsl(var(--light-navy));
+    --sidebar-accent-foreground: hsl(var(--lightest-slate));
+    --sidebar-border: hsl(var(--light-navy));
+    --sidebar-ring: hsl(var(--green));
   }
 }
 
@@ -96,7 +108,7 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans font-bold;
+    @apply font-sans font-bold text-lightest-slate;
   }
   h1 {
     @apply text-4xl md:text-5xl;
@@ -139,11 +151,11 @@
   }
   
   .glass-card {
-    @apply bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-lg;
+    @apply bg-light-navy/90 backdrop-blur-lg border border-light-navy rounded-lg;
   }
   
   .skill-badge {
-    @apply px-3 py-1 rounded-md text-sm font-medium bg-background text-foreground border border-border/50 transition-all hover:border-primary hover:text-primary hover:scale-105;
+    @apply px-3 py-1 rounded-md text-sm font-medium bg-light-navy text-light-slate border border-border/50 transition-all hover:border-primary hover:text-primary hover:scale-105;
   }
   
   .timeline-item {
@@ -199,5 +211,29 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  
+  .text-slate {
+    color: hsl(var(--slate));
+  }
+  
+  .text-light-slate {
+    color: hsl(var(--light-slate));
+  }
+  
+  .text-lightest-slate {
+    color: hsl(var(--lightest-slate));
+  }
+  
+  .bg-navy {
+    background-color: hsl(var(--navy));
+  }
+  
+  .bg-dark-navy {
+    background-color: hsl(var(--dark-navy));
+  }
+  
+  .bg-light-navy {
+    background-color: hsl(var(--light-navy));
   }
 }

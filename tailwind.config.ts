@@ -25,6 +25,13 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				navy: 'hsl(var(--navy))',
+				'dark-navy': 'hsl(var(--dark-navy))',
+				'light-navy': 'hsl(var(--light-navy))',
+				slate: 'hsl(var(--slate))',
+				'light-slate': 'hsl(var(--light-slate))',
+				'lightest-slate': 'hsl(var(--lightest-slate))',
+				green: 'hsl(var(--green))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -65,8 +72,8 @@ export default {
 				}
 			},
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
-				mono: ['Fira Code', 'monospace'],
+				sans: ['Calibre', 'Inter', 'sans-serif'],
+				mono: ['SF Mono', 'Fira Code', 'monospace'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
