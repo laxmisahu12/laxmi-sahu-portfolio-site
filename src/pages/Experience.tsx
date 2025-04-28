@@ -8,7 +8,8 @@ const experiences = [
   {
     title: 'AI Engineer (Freelancer)',
     company: 'Outlier.ai',
-    logo: 'https://via.placeholder.com/80',
+    companyUrl: 'https://outlier.ai/',
+    logo: '/assets/outlier.png',
     period: 'January 2025 - Present',
     location: 'Stockholm, Sweden',
     achievements: [
@@ -21,7 +22,8 @@ const experiences = [
   {
     title: 'System Analyst',
     company: 'Bitwise Solutions Pvt. Ltd',
-    logo: 'https://via.placeholder.com/80',
+    companyUrl: 'https://www.bitwiseglobal.com/',
+    logo: '/assets/bitwise.png',
     period: 'July 2024 - December 2024',
     location: 'Pune, India',
     achievements: [
@@ -33,7 +35,8 @@ const experiences = [
   {
     title: 'Software Engineer',
     company: 'Securly India Private Limited',
-    logo: 'https://via.placeholder.com/80',
+    companyUrl: 'https://www.securly.com/',
+    logo: '/assets/securly.png',
     period: 'March 2019 - May 2023',
     location: 'Pune, India',
     achievements: [
@@ -48,7 +51,8 @@ const experiences = [
   {
     title: 'Full Stack & Android Developer',
     company: 'SPEGI Technologies',
-    logo: 'https://via.placeholder.com/80',
+    companyUrl: 'http://www.spegitech.com/',
+    logo: '/assets/spegi.png',
     period: 'December 2015 - May 2018',
     location: 'Indore, India',
     achievements: [
@@ -96,7 +100,11 @@ const Experience = () => {
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                     <div>
                       <h3 className="text-xl font-semibold">{exp.title}</h3>
-                      <h4 className="text-lg text-primary">{exp.company}</h4>
+                      <h4 className="text-lg text-primary">
+                        <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                          {exp.company}
+                        </a>
+                      </h4>
                     </div>
                     
                     <div className="mt-2 md:mt-0 space-y-2">

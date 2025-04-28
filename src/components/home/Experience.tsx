@@ -8,6 +8,7 @@ const experiences = [
   {
     title: 'AI Engineer (Freelancer)',
     company: 'Outlier.ai',
+    companyUrl: 'https://outlier.ai/',
     period: 'January 2025 - Present',
     location: 'Stockholm, Sweden',
     description: [
@@ -20,6 +21,7 @@ const experiences = [
   {
     title: 'System Analyst',
     company: 'Bitwise Solutions Pvt. Ltd',
+    companyUrl: 'https://www.bitwiseglobal.com/',
     period: 'July 2024 - December 2024',
     location: 'Pune, India',
     description: [
@@ -31,6 +33,7 @@ const experiences = [
   {
     title: 'Software Engineer',
     company: 'Securly India Private Limited',
+    companyUrl: 'https://www.securly.com/',
     period: 'March 2019 - May 2023',
     location: 'Pune, India',
     description: [
@@ -77,7 +80,7 @@ const Experience = () => {
               <div className="mb-2">
                 <h3 className="text-xl font-medium">
                   <span className="text-foreground">{exp.title}</span>
-                  <span className="text-primary"> @ {exp.company}</span>
+                  <span className="text-primary"> @ <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">{exp.company}</a></span>
                 </h3>
                 <p className="text-muted-foreground mt-1 font-mono text-sm">{exp.period}</p>
               </div>
