@@ -1,22 +1,16 @@
-
 import PageBanner from '@/components/shared/PageBanner';
 import SectionHeading from '@/components/shared/SectionHeading';
 import ContactIcons from '@/components/shared/ContactIcons';
 import { Helmet } from 'react-helmet-async';
 import { Briefcase, GraduationCap } from 'lucide-react';
-
 const About = () => {
-  return (
-    <>
+  return <>
       <Helmet>
         <title>About | Laxmi Sahu</title>
         <meta name="description" content="Learn about Laxmi Sahu, a Data Engineer and Full Stack Developer with 7+ years of experience specializing in data pipelines, ETL, and cloud solutions." />
       </Helmet>
       
-      <PageBanner 
-        title="About Me" 
-        subtitle="Learn more about my background, expertise, and journey"
-      />
+      <PageBanner title="About Me" subtitle="Learn more about my background, expertise, and journey" />
       
       <div className="section-container">
         <div className="grid grid-cols-1 gap-12 section-fade-in">
@@ -89,7 +83,7 @@ const About = () => {
                   </div>
                   
                   <div className="timeline-item">
-                    <h4 className="text-lg font-medium">Software Engineer</h4>
+                    <h4 className="text-lg font-medium">Sr. Software Engineer</h4>
                     <p className="text-primary">Securly India Private Limited</p>
                     <p className="text-muted-foreground">March 2019 - May 2023 | Pune, India</p>
                   </div>
@@ -105,8 +99,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default About;
