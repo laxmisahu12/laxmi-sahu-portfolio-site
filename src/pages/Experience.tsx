@@ -33,7 +33,7 @@ const experiences = [
     ]
   },
   {
-    title: 'Software Engineer',
+    title: 'Sr. Software Engineer',
     company: 'Securly India Private Limited',
     companyUrl: 'https://www.securly.com/',
     logo: '/assets/securly.png',
