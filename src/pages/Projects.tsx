@@ -7,6 +7,12 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const projects = [
   {
+    title: 'Data Analysis Web Platform',
+    period: 'January 2025 - Present',
+    description: 'A comprehensive web platform that empowers data scientists to securely upload datasets, automate data cleaning, create interactive visualizations, and perform statistical analysis with AI Agents — all within a single intuitive interface.',
+    techStack: ['Python', 'React', 'TypeScript', 'Docker', 'TensorFlow', 'AWS', 'D3.js'],
+  },
+  {
     title: 'NFR Automation Framework',
     period: 'July 2024 – Dec 2024',
     description: 'A comprehensive automation framework designed to streamline non-functional requirements testing by generating JMX files from Postman Collections, enabling seamless integration with JMeter and reducing manual testing efforts by 90%.',
@@ -47,7 +53,7 @@ const Projects = () => {
       </Helmet>
       
       <PageBanner 
-        title="Projects Portfolio" 
+        title="Projects" 
         subtitle="A showcase of my technical projects and solutions"
       />
       

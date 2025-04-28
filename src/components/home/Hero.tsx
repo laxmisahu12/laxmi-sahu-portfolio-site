@@ -30,12 +30,13 @@ const Hero = () => {
               </Link>
             </Button>
             
-            <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary/10 group">
+            {/* Hidden resume button per request */}
+            {/* <Button variant="outline" asChild className="border-primary text-primary hover:bg-primary/10 group">
               <a href="/laxmi-sahu-resume.pdf" download className="font-mono text-sm group-hover:text-primary">
                 Resume
                 <Download size={16} className="ml-2 group-hover:translate-y-1 transition-transform" />
               </a>
-            </Button>
+            </Button> */}
           </div>
         </div>
       </div>

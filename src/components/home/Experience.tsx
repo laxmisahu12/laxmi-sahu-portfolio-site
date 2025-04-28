@@ -12,10 +12,9 @@ const experiences = [
     period: 'January 2025 - Present',
     location: 'Stockholm, Sweden',
     description: [
-      'Developing and implementing advanced NLP models for content analysis and classification.',
-      'Creating AI-driven recommendation systems to enhance user engagement and content discovery.',
-      'Building and optimizing machine learning pipelines for real-time data processing.',
-      'Implementing transformer-based models for text generation and summarization tasks.'
+      'Leading the development of a data analysis web platform that enables users to securely upload datasets, perform advanced data cleaning, generate interactive visualizations, and conduct statistical analysis through a unified interface.',
+      'Integrating AI agents to automate key data preprocessing steps such as missing value handling, outlier detection, and recommending optimal data transformation techniques to improve workflow efficiency.',
+      'Building a scalable, containerized platform architecture and designing a highly responsive user interface to cater to both novice and experienced data scientists, enhancing usability and system performance.'
     ]
   },
   {

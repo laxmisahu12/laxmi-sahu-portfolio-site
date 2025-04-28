@@ -9,21 +9,19 @@ const experiences = [
     title: 'AI Engineer (Freelancer)',
     company: 'Outlier.ai',
     companyUrl: 'https://outlier.ai/',
-    logo: '/assets/outlier.png',
     period: 'January 2025 - Present',
     location: 'Stockholm, Sweden',
     achievements: [
-      'Developing and implementing advanced NLP models for content analysis and classification.',
-      'Creating AI-driven recommendation systems to enhance user engagement and content discovery.',
-      'Building and optimizing machine learning pipelines for real-time data processing.',
-      'Implementing transformer-based models for text generation and summarization tasks.'
+      'Aim to streamline data preprocessing workflows by up to 40% through the integration of AI agents for automating missing value handling, outlier detection, and data transformation recommendations.',
+      'Expected to improve user adoption and engagement by 30–35% with a highly intuitive and responsive interface designed for both novice and experienced data scientists.',
+      'Plan to eliminate the need for multiple external tools by centralizing data upload, cleaning, visualization, and statistical analysis into a single unified platform.',
+      'Working toward achieving near real-time visualization generation, empowering users to explore datasets dynamically and derive insights faster.'
     ]
   },
   {
     title: 'System Analyst',
     company: 'Bitwise Solutions Pvt. Ltd',
     companyUrl: 'https://www.bitwiseglobal.com/',
-    logo: '/assets/bitwise.png',
     period: 'July 2024 - December 2024',
     location: 'Pune, India',
     achievements: [
@@ -36,7 +34,6 @@ const experiences = [
     title: 'Sr. Software Engineer',
     company: 'Securly India Private Limited',
     companyUrl: 'https://www.securly.com/',
-    logo: '/assets/securly.png',
     period: 'March 2019 - May 2023',
     location: 'Pune, India',
     achievements: [
@@ -49,10 +46,9 @@ const experiences = [
     ]
   },
   {
-    title: 'Full Stack & Android Developer',
+    title: 'Sr. Software Engineer',
     company: 'SPEGI Technologies',
     companyUrl: 'http://www.spegitech.com/',
-    logo: '/assets/spegi.png',
     period: 'December 2015 - May 2018',
     location: 'Indore, India',
     achievements: [
@@ -86,16 +82,6 @@ const Experience = () => {
           {experiences.map((exp, index) => (
             <div key={index} className="bg-secondary/30 p-6 rounded-lg shadow-sm border border-border/50 hover-card">
               <div className="flex flex-col md:flex-row gap-6">
-                <div className="flex-shrink-0 flex items-start justify-center">
-                  <div className="w-20 h-20 bg-background rounded-lg flex items-center justify-center p-2 shadow-sm">
-                    <img 
-                      src={exp.logo} 
-                      alt={`${exp.company} logo`} 
-                      className="max-w-full max-h-full object-contain" 
-                    />
-                  </div>
-                </div>
-                
                 <div className="flex-grow">
                   <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                     <div>

@@ -1,3 +1,4 @@
+
 import PageBanner from '@/components/shared/PageBanner';
 import SectionHeading from '@/components/shared/SectionHeading';
 import ContactIcons from '@/components/shared/ContactIcons';
@@ -72,25 +73,41 @@ const About = () => {
                 <div className="space-y-6">
                   <div className="timeline-item">
                     <h4 className="text-lg font-medium">AI Engineer (Freelancer)</h4>
-                    <p className="text-primary">Outlier.ai</p>
+                    <p className="text-primary">
+                      <a href="https://outlier.ai" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        Outlier.ai
+                      </a>
+                    </p>
                     <p className="text-muted-foreground">January 2025 - Present | Stockholm, Sweden</p>
                   </div>
                   
                   <div className="timeline-item">
                     <h4 className="text-lg font-medium">System Analyst</h4>
-                    <p className="text-primary">Bitwise Solutions Pvt. Ltd</p>
+                    <p className="text-primary">
+                      <a href="https://www.bitwiseglobal.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        Bitwise Solutions Pvt. Ltd
+                      </a>
+                    </p>
                     <p className="text-muted-foreground">July 2024 - December 2024 | Pune, India</p>
                   </div>
                   
                   <div className="timeline-item">
                     <h4 className="text-lg font-medium">Sr. Software Engineer</h4>
-                    <p className="text-primary">Securly India Private Limited</p>
+                    <p className="text-primary">
+                      <a href="https://www.securly.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        Securly India Private Limited
+                      </a>
+                    </p>
                     <p className="text-muted-foreground">March 2019 - May 2023 | Pune, India</p>
                   </div>
                   
                   <div className="timeline-item">
-                    <h4 className="text-lg font-medium">Full Stack & Android Developer</h4>
-                    <p className="text-primary">SPEGI Technologies</p>
+                    <h4 className="text-lg font-medium">Sr. Software Engineer</h4>
+                    <p className="text-primary">
+                      <a href="http://www.spegitech.com/" target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        SPEGI Technologies
+                      </a>
+                    </p>
                     <p className="text-muted-foreground">December 2015 - May 2018 | Indore, India</p>
                   </div>
                 </div>
