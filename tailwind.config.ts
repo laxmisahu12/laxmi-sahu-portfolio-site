@@ -63,7 +63,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Brittany Chiang theme colors
+				// Brittany Chiang theme colors - updated to support opacity modifiers
 				navy: {
 					DEFAULT: 'var(--navy)',
 					light: 'var(--light-navy)',
@@ -78,6 +78,11 @@ export default {
 				green: {
 					DEFAULT: 'var(--green)',
 					tint: 'var(--green-tint)',
+				},
+				// Adding proper hex values for direct color references with opacity
+				'lightest-navy': {
+					DEFAULT: '#233554',
+					'50': 'rgba(35, 53, 84, 0.5)',
 				}
 			},
 			fontFamily: {

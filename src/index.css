@@ -142,11 +142,11 @@
   }
   
   .glass-card {
-    @apply bg-light-navy backdrop-blur-lg border border-lightest-navy/50 rounded-lg;
+    @apply bg-light-navy backdrop-blur-lg border border-lightest-navy-50 rounded-lg;
   }
   
   .skill-badge {
-    @apply px-3 py-1 rounded-md text-sm font-medium font-mono bg-navy text-lightest-slate border border-lightest-navy/50 transition-all hover:border-primary hover:text-primary hover:scale-105;
+    @apply px-3 py-1 rounded-md text-sm font-medium font-mono bg-navy text-lightest-slate border border-lightest-navy-50 transition-all hover:border-primary hover:text-primary hover:scale-105;
   }
   
   .timeline-item {
