@@ -66,11 +66,15 @@ const Skills = () => {
       />
       
       <div className="section-container">
-        <h2 className="numbered-heading">Technical Skills</h2>
+        <SectionHeading 
+          title="Technical Skills" 
+          subtitle="My toolkit for building robust, scalable data solutions and applications"
+          className="section-fade-in"
+        />
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 section-fade-in">
           {skillGroups.map((group, index) => (
-            <div key={index} className="bg-light-navy p-6 rounded-lg hover-card">
+            <div key={index} className="bg-secondary/30 p-6 rounded-lg hover-card">
               <div className="flex items-center mb-4">
                 {group.icon}
                 <h3 className="text-xl font-semibold ml-3">{group.category}</h3>

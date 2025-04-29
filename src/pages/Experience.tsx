@@ -1,9 +1,8 @@
 
 import PageBanner from '@/components/shared/PageBanner';
+import SectionHeading from '@/components/shared/SectionHeading';
 import { Helmet } from 'react-helmet-async';
 import { Calendar, MapPin } from 'lucide-react';
-import { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const experiences = [
   {
@@ -60,8 +59,6 @@ const experiences = [
 ];
 
 const Experience = () => {
-  const [activeTab, setActiveTab] = useState("0");
-  
   return (
     <>
       <Helmet>
@@ -75,69 +72,51 @@ const Experience = () => {
       />
       
       <div className="section-container">
-        <h2 className="numbered-heading">Where I've Worked</h2>
+        <SectionHeading 
+          title="Work Experience" 
+          subtitle="My professional journey through various roles and organizations"
+          className="section-fade-in"
+        />
         
-        <div className="tabs-container mt-10 flex flex-col md:flex-row">
-          <Tabs 
-            defaultValue="0" 
-            className="w-full"
-            value={activeTab}
-            onValueChange={setActiveTab}
-          >
-            <TabsList className="md:w-max mb-8 md:mb-0 md:mr-8 flex md:flex-col overflow-x-auto">
-              {experiences.map((exp, index) => (
-                <TabsTrigger 
-                  key={index} 
-                  value={index.toString()}
-                  className="min-w-32 md:w-full text-left px-4 py-3 md:border-l-2 md:border-l-lightest-navy md:border-b-0 border-b-2 border-b-lightest-navy font-mono text-sm data-[state=active]:border-l-primary data-[state=active]:text-primary"
-                >
-                  {exp.company.split(' ')[0]}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-            
-            <div className="tab-panels">
-              {experiences.map((exp, index) => (
-                <TabsContent 
-                  key={index} 
-                  value={index.toString()}
-                  className="p-0 mt-0"
-                >
-                  <div className="mb-6">
-                    <h3 className="text-xl font-medium">
-                      <span>{exp.title}</span>
-                      {" "}
-                      <span className="text-primary">
-                        @ <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="inline-link">
+        <div className="space-y-12 section-fade-in">
+          {experiences.map((exp, index) => (
+            <div key={index} className="bg-secondary/30 p-6 rounded-lg shadow-sm border border-border/50 hover-card">
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="flex-grow">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                    <div>
+                      <h3 className="text-xl font-semibold">{exp.title}</h3>
+                      <h4 className="text-lg text-primary">
+                        <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
                           {exp.company}
                         </a>
-                      </span>
-                    </h3>
+                      </h4>
+                    </div>
                     
-                    <p className="text-light-slate font-mono text-sm mt-1 mb-4">
-                      <span className="flex items-center gap-2">
-                        <Calendar size={14} className="inline" />
-                        {exp.period}
-                      </span>
-                      <span className="flex items-center gap-2 mt-1">
-                        <MapPin size={14} className="inline" />
-                        {exp.location}
-                      </span>
-                    </p>
+                    <div className="mt-2 md:mt-0 space-y-2">
+                      <div className="flex items-center text-muted-foreground">
+                        <Calendar size={16} className="mr-2" />
+                        <span>{exp.period}</span>
+                      </div>
+                      <div className="flex items-center text-muted-foreground">
+                        <MapPin size={16} className="mr-2" />
+                        <span>{exp.location}</span>
+                      </div>
+                    </div>
                   </div>
                   
-                  <ul className="space-y-4">
-                    {exp.achievements.map((achievement, i) => (
-                      <li key={i} className="relative pl-7 text-light-slate">
-                        <span className="absolute left-0 text-primary">▹</span>
-                        {achievement}
-                      </li>
-                    ))}
-                  </ul>
-                </TabsContent>
-              ))}
+                  <div className="mt-4">
+                    <h5 className="font-medium mb-2">Key Achievements:</h5>
+                    <ul className="list-disc pl-5 space-y-2">
+                      {exp.achievements.map((achievement, i) => (
+                        <li key={i}>{achievement}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </div>
-          </Tabs>
+          ))}
         </div>
       </div>
     </>
