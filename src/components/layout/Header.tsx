@@ -35,35 +35,38 @@ const Header = () => {
     <header 
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-background/80 backdrop-blur-md shadow-sm border-b border-border' 
-          : 'bg-transparent'
-      }`}
+          ? 'h-[var(--nav-scroll-height)] shadow-md shadow-navy-shadow' 
+          : 'h-[var(--nav-height)]'
+      } bg-navy`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+      <div className="container mx-auto px-6">
+        <div className="flex justify-between items-center h-full">
           {/* Logo */}
           <Link to="/" className="flex items-center font-bold text-xl">
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground mr-2 transition-transform hover:scale-110">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full text-primary hover:bg-green-tint transition-colors">
               LS
             </div>
-            <span className="hidden sm:block hover:text-primary transition-colors">Laxmi Sahu</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-6">
-            {navigationLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`font-medium transition-colors hover:text-primary ${
-                  location.pathname === link.path 
-                    ? 'text-primary' 
-                    : 'text-foreground/80'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+          <nav className="hidden md:flex space-x-6 items-center">
+            <ol className="flex space-x-5 items-center font-mono text-sm">
+              {navigationLinks.map((link, index) => (
+                <li key={link.name}>
+                  <Link
+                    to={link.path}
+                    className={`transition-colors hover:text-primary ${
+                      location.pathname === link.path 
+                        ? 'text-primary' 
+                        : 'text-slate-lightest'
+                    }`}
+                  >
+                    <span className="text-primary mr-1">0{index + 1}.</span>
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ol>
           </nav>
 
           {/* Actions */}
@@ -72,7 +75,7 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden hover:text-primary hover:bg-primary/10"
+              className="md:hidden hover:text-primary hover:bg-green-tint"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -88,19 +91,20 @@ const Header = () => {
 
       {/* Mobile Navigation */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-background dark:bg-background border-t border-border">
-          <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4">
-            {navigationLinks.map((link) => (
+        <div className="md:hidden bg-light-navy py-4">
+          <nav className="container mx-auto px-4 flex flex-col space-y-4">
+            {navigationLinks.map((link, index) => (
               <Link
                 key={link.name}
                 to={link.path}
-                className={`py-2 font-medium transition-colors hover:text-primary ${
+                className={`py-2 font-mono transition-colors hover:text-primary ${
                   location.pathname === link.path 
                     ? 'text-primary' 
-                    : 'text-foreground'
+                    : 'text-slate-lightest'
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
+                <span className="text-primary mr-2">0{index + 1}.</span>
                 {link.name}
               </Link>
             ))}

@@ -1,9 +1,7 @@
 
-import { useState } from 'react';
 import PageBanner from '@/components/shared/PageBanner';
 import { Helmet } from 'react-helmet-async';
-import SectionHeading from '@/components/shared/SectionHeading';
-import { Card, CardContent } from '@/components/ui/card';
+import { Github, ExternalLink, Folder } from 'lucide-react';
 
 const projects = [
   {
@@ -58,32 +56,68 @@ const Projects = () => {
       />
       
       <div className="section-container">
-        <div className="space-y-16">
+        <h2 className="numbered-heading">Projects</h2>
+        
+        <ul className="projects-grid space-y-24 mt-10">
           {projects.map((project, index) => (
-            <div 
-              key={index} 
-              className={`relative ${
-                index % 2 === 0 ? 'text-left' : 'text-right'
-              }`}
-            >
-              <div className="space-y-4 hover-card">
-                <h3 className="text-2xl font-bold text-primary">
+            <li key={index} className={`project relative ${index % 2 === 0 ? '' : 'even'}`}>
+              <div className="project-content">
+                <h3 className="project-title text-2xl font-bold text-primary">
                   {project.title}
                 </h3>
                 
-                <div className="bg-secondary/30 p-6 rounded-lg shadow-md">
-                  <p className="text-foreground">{project.description}</p>
+                <div className="project-description bg-light-navy p-6 rounded-lg my-5">
+                  <p className="text-light-slate">{project.description}</p>
                 </div>
                 
-                <div className={`flex flex-wrap gap-2 text-sm ${
-                  index % 2 === 0 ? '' : 'justify-end'
+                <ul className={`project-tech-list flex flex-wrap gap-2 mt-6 ${
+                  index % 2 !== 0 ? 'justify-end' : ''
                 }`}>
                   {project.techStack.map((tech, i) => (
-                    <span key={i} className="skill-badge">
+                    <li key={i} className="text-light-slate font-mono text-xs">
                       {tech}
-                    </span>
+                    </li>
                   ))}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ul>
+        
+        <h2 className="numbered-heading mt-24">Other Projects</h2>
+        
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.slice(2, 5).map((project, index) => (
+            <div 
+              key={`other-${index}`} 
+              className="other-project bg-light-navy rounded-lg p-6 hover-card cursor-pointer"
+            >
+              <div className="project-top flex justify-between items-center mb-8">
+                <Folder className="text-primary" size={40} />
+                <div className="project-links flex gap-4">
+                  <a href="#" className="text-light-slate hover:text-primary">
+                    <Github size={20} />
+                  </a>
+                  <a href="#" className="text-light-slate hover:text-primary">
+                    <ExternalLink size={20} />
+                  </a>
                 </div>
+              </div>
+              
+              <h3 className="text-xl font-semibold mb-2 text-lightest-slate">
+                {project.title}
+              </h3>
+              
+              <div className="mt-4 mb-8">
+                <p className="text-light-slate text-sm">{project.description.substring(0, 150)}...</p>
+              </div>
+              
+              <div className="mt-auto">
+                <ul className="flex flex-wrap gap-2 text-xs font-mono text-light-slate">
+                  {project.techStack.slice(0, 4).map((tech, i) => (
+                    <li key={i}>{tech}</li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

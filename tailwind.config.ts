@@ -62,11 +62,27 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Brittany Chiang theme colors
+				navy: {
+					DEFAULT: 'var(--navy)',
+					light: 'var(--light-navy)',
+					lightest: 'var(--lightest-navy)',
+				},
+				slate: {
+					DEFAULT: 'var(--slate)',
+					light: 'var(--light-slate)',
+					lightest: 'var(--lightest-slate)',
+				},
+				white: 'var(--white)',
+				green: {
+					DEFAULT: 'var(--green)',
+					tint: 'var(--green-tint)',
 				}
 			},
 			fontFamily: {
-				sans: ['Inter', 'sans-serif'],
-				mono: ['Fira Code', 'monospace'],
+				sans: ['Inter', 'Calibre', 'San Francisco', 'SF Pro Text', '-apple-system', 'system-ui', 'sans-serif'],
+				mono: ['Fira Code', 'SF Mono', 'Roboto Mono', 'monospace'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -113,6 +129,10 @@ export default {
 				'spin-slow': {
 					'0%': { transform: 'rotate(0deg)' },
 					'100%': { transform: 'rotate(360deg)' }
+				},
+				'fadeup': {
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
 				}
 			},
 			animation: {
@@ -126,6 +146,8 @@ export default {
 				'blink': 'blink 0.7s infinite',
 				'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
 				'spin-slow': 'spin-slow 3s linear infinite',
+				'fadeup': 'fadeup 0.5s ease-out',
+				'fadein': 'fadein 1s ease-in forwards',
 			}
 		}
 	},
