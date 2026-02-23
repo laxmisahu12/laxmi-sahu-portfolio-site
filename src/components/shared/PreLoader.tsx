@@ -31,7 +31,7 @@ const PreLoader = () => {
               Laxmi Sahu
             </h2>
           </div>
-          <p className="mt-2 text-muted-foreground animate-pulse">Data Engineer & Data Analyst</p>
+          <p className="mt-2 text-muted-foreground animate-pulse">Data Engineer & Full Stack Developer</p>
         </div>
       </div>
     </div>

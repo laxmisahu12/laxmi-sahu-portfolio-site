@@ -4,6 +4,7 @@ import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import PreLoader from '../shared/PreLoader';
+import AskLaxmi from '../shared/AskLaxmi';
 
 const Layout = () => {
   const location = useLocation();
@@ -48,6 +49,7 @@ const Layout = () => {
         </main>
         <Footer />
       </div>
+      <AskLaxmi />
     </>
   );
 };
