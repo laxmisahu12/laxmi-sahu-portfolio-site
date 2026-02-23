@@ -127,20 +127,29 @@ export default function AskLaxmi() {
       if (!apiKey) throw new Error('NO_KEY');
 
       // Build conversation history for Gemini
+      // System prompt injected as first user/model exchange for compatibility
       const history = updatedMessages.slice(0, -1).map((m) => ({
         role: m.role === 'user' ? 'user' : 'model',
         parts: [{ text: m.text }],
       }));
 
       const body = {
-        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
         contents: [
+          // System context as first turn
+          {
+            role: 'user',
+            parts: [{ text: `INSTRUCTIONS: ${SYSTEM_PROMPT}\n\nACKNOWLEDGE: Understood, I will act as Ask Laxmi.` }],
+          },
+          {
+            role: 'model',
+            parts: [{ text: "Understood! I'm Ask Laxmi, Laxmi Sahu's AI assistant. I'm ready to help visitors learn about her experience, skills, projects, and availability. What would you like to know?" }],
+          },
           ...history,
           { role: 'user', parts: [{ text: text.trim() }] },
         ],
         generationConfig: {
           temperature: 0.7,
-          maxOutputTokens: 300,
+          maxOutputTokens: 400,
         },
       };
 
@@ -153,18 +162,30 @@ export default function AskLaxmi() {
         }
       );
 
-      if (!res.ok) throw new Error(`API_ERROR_${res.status}`);
+      if (!res.ok) {
+        const errBody = await res.json().catch(() => ({}));
+        console.error('Gemini API error:', res.status, errBody);
+        throw new Error(`API_ERROR_${res.status}: ${JSON.stringify(errBody)}`);
+      }
       const data = await res.json();
+      console.log('Gemini response:', data);
       const reply =
         data?.candidates?.[0]?.content?.parts?.[0]?.text ||
         "I'm not sure how to answer that — try asking something else or visit the Contact page!";
 
       setMessages((prev) => [...prev, { role: 'assistant', text: reply }]);
     } catch (err: any) {
+      console.error('AskLaxmi error:', err);
       if (err.message === 'NO_KEY') {
         setError('API key not configured. Add VITE_GEMINI_API_KEY to your Vercel environment variables.');
+      } else if (err.message?.includes('API_ERROR_400')) {
+        setError('Bad request — the prompt may be too long. Try a shorter question.');
+      } else if (err.message?.includes('API_ERROR_403')) {
+        setError('API key invalid or not authorised. Check your VITE_GEMINI_API_KEY in Vercel settings.');
+      } else if (err.message?.includes('API_ERROR_429')) {
+        setError('Rate limit hit — you\'re on the free tier. Please wait a moment and try again.');
       } else {
-        setError('Something went wrong. Please try again in a moment.');
+        setError(`Error: ${err.message || 'Unknown error. Check browser console for details.'}`);
       }
     } finally {
       setLoading(false);
@@ -221,7 +242,7 @@ export default function AskLaxmi() {
             </div>
             <div>
               <p className="text-[#64ffda] font-mono font-semibold text-sm">Ask Laxmi</p>
-              <p className="text-[#8892b0] text-xs">AI portfolio assistant · Gemini</p>
+              <p className="text-[#8892b0] text-xs">AI portfolio assistant · Gemini 2.0</p>
             </div>
             <button
               onClick={() => setOpen(false)}
