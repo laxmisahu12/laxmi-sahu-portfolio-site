@@ -91,7 +91,7 @@ export default function AskLaxmi() {
       if (!res.ok) {
         const errBody = await res.json().catch(() => ({}));
         console.error('Groq API error:', res.status, errBody);
-        throw new Error(`API_ERROR_${res.status}: ${JSON.stringify(errBody)}`);
+        throw new Error(`API_ERROR_${res.status}: ${JSON.stringify(errBody, apiKey)}`);
       }
 
       const data = await res.json();
