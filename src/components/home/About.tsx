@@ -42,7 +42,7 @@ const About = () => {
             <div className="relative z-10 overflow-hidden rounded-md border-2 border-primary/20">
               <AspectRatio ratio={1/1} className="bg-secondary/30">
                 <img 
-                  src="/lovable-uploads/8cd2f2ff-0d22-4565-ba19-026f6395f405.png" 
+                  src="/lovable-uploads/profile.jpeg.png" 
                   alt="Laxmi Sahu"
                   className="object-cover h-full w-full brightness-90 contrast-105"
                 />

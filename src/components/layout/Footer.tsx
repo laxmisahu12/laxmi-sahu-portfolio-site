@@ -17,7 +17,7 @@ const Footer = () => {
               <span>Laxmi Sahu</span>
             </Link>
             <p className="text-muted-foreground">
-              Data Engineer & Full Stack Developer based in Stockholm, Sweden.
+              Data Engineer & Data Analyst based in Stockholm, Sweden.
             </p>
           </div>
 
