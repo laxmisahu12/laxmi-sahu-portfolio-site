@@ -32,9 +32,9 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Laxmi Sahu | Data Engineer & Full Stack Developer</title>
+        <title>Laxmi Sahu | Data Engineer & Data Analyst</title>
         <meta name="description" content="Portfolio of Laxmi Sahu, a Data Engineer and Full Stack Developer with 7+ years of experience in Enterprise Application Development, specializing in ETL, Python, AWS and GCP." />
-        <meta property="og:title" content="Laxmi Sahu | Data Engineer & Full Stack Developer" />
+        <meta property="og:title" content="Laxmi Sahu | Data Engineer & Data Analyst" />
         <meta property="og:description" content="Portfolio of Laxmi Sahu, a Data Engineer and Full Stack Developer with 7+ years of experience in ETL, Python, AWS and GCP." />
         <meta property="og:type" content="website" />
       </Helmet>
