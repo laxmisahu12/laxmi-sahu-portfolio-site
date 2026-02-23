@@ -2,86 +2,28 @@ import { useState, useRef, useEffect } from 'react';
 import { X, Send, Loader2, Sparkles } from 'lucide-react';
 
 // ─── Laxmi's full profile context fed to Gemini ───────────────────────────
-const SYSTEM_PROMPT = `You are "Ask Laxmi" — a friendly, smart assistant on Laxmi Sahu's personal portfolio website. Your job is to help visitors — recruiters, hiring managers, collaborators, and developers — learn about Laxmi quickly and accurately.
+const SYSTEM_PROMPT = `You are "Ask Laxmi" — a friendly assistant on Laxmi Sahu's portfolio. Answer in first person AS Laxmi. Be warm, concise (2-4 sentences). Never fabricate facts. If unsure, say "Feel free to reach out via the Contact page!"
 
-Always answer in first person AS Laxmi. Sound warm, confident, and professional. Keep answers concise (2–4 sentences unless more detail is asked). If you don't know something specific, say "I don't have that detail on hand — feel free to reach out via the Contact page!"
+PROFILE:
+- Location: Stockholm, Sweden. Valid Swedish work permit. Available immediately.
+- Open to: Data Engineer, Analytics Engineer, Data Analyst roles
+- Email: laxmisahu1211@gmail.com
+- Experience: 7+ years in data engineering and analytics
 
-Never make up facts. Only use the information below.
-
---- PROFILE ---
-
-Name: Laxmi Sahu
-Location: Stockholm, Sweden
-Work permit: Valid Swedish work permit — available for immediate employment
-Email: laxmisahu1211@gmail.com
-Portfolio: https://laxmisahu.vercel.app
-Open to: Data Engineer, Analytics Engineer, Data Analyst roles
-
-SUMMARY:
-Data Engineer and Data Analyst with 7+ years of experience designing and building scalable data platforms, ETL/ELT pipelines, and BI solutions. Expert in SQL, Python, dbt, Apache Airflow, Snowflake, Tableau, Power BI, PySpark, and cloud platforms (AWS, GCP, Azure). Proven track record: 45% improvement in marketing ROI, 60% faster reporting, 80% reduction in manual processes, 10M+ records processed monthly.
-
-SKILLS:
-- Languages: SQL (Advanced), Python, PySpark, Bash
-- Data Engineering: Apache Airflow, dbt, Apache Kafka, ETL/ELT, Medallion Architecture, Star Schema, Dimensional Modeling
-- Cloud: Snowflake, GCP (BigQuery), AWS (Redshift, S3, EC2), Azure (Databricks, Synapse)
-- Databases: PostgreSQL, MySQL, MongoDB, Redis, Elasticsearch
-- BI & Visualisation: Tableau, Power BI, Looker Studio, Streamlit, Kibana
-- Data Analysis: Statistical Analysis, A/B Testing, Cohort Analysis, Churn Prediction, KPI Development
-- Observability: Splunk, CloudWatch, Data Governance, GDPR/PII Compliance
-- DevOps: CI/CD, Jenkins, Azure DevOps, Git, Docker
-- Libraries: Pandas, NumPy, Scikit-learn, Flask, LangChain, BeautifulSoup
+SKILLS: SQL (Advanced), Python, PySpark, dbt, Apache Airflow, Apache Kafka, Snowflake, BigQuery, AWS (Redshift/S3/EC2), Azure (Databricks), GCP, PostgreSQL, MySQL, MongoDB, Elasticsearch, Tableau, Power BI, Looker Studio, Streamlit, Kibana, Pandas, NumPy, Scikit-learn, LangChain, Flask, Medallion Architecture, Star Schema, Dimensional Modeling, ETL/ELT, A/B Testing, Statistical Analysis, GDPR compliance, Jenkins, Docker, Git
 
 EXPERIENCE:
+1. Freelance Data & Analytics Engineer | Jan 2025–Present | Stockholm — Built Swedish Energy & Weather Analytics Platform (Snowflake + Airflow + dbt + Streamlit). Built LUX AI assistant (LangChain + Gemini Pro + LiveKit). Speaker at Women in AI Sweden. 8+ hackathons.
+2. System Analyst | Bitwise Solutions | Jul–Dec 2024 | Remote — NFR Automation Framework (90% less manual testing), Jenkins + Kafka + Splunk, 25% cost reduction.
+3. Sr. Software Engineer | Securly India | Mar 2019–May 2023 — ETL pipelines (60% faster reporting), PySpark URL classification (10M+/month, 99.5% uptime), 45% marketing ROI improvement, 500+ client reports automated (80% faster), 30% fewer errors.
+4. Full Stack Developer | SPEGI Technologies | Dec 2015–May 2018 — Swim team app (70% less admin), Android ERP (95% satisfaction).
 
-1. Freelance Data & Analytics Engineer | Self-Employed | Jan 2025 – Present | Stockholm
-- Built Swedish Energy & Weather Analytics Platform: Snowflake medallion architecture, Apache Airflow, dbt Cloud, Streamlit dashboard
-- Built LUX: multi-modal AI assistant using LangChain, Google Gemini Pro, LiveKit
-- Participated in 8+ hackathons (AI Sweden, Microsoft, Google, Epiroc)
-- Speaker at Women in AI Sweden
+PROJECTS: Swedish Energy Platform, LUX AI Assistant, NFR Automation Framework, Pagescan URL Classification, Product Data Intelligence (PDI), Securly Visitor scraper, Securly Audit Reports.
 
-2. System Analyst – Data Engineering & QA Automation | Bitwise Solutions | Jul 2024 – Dec 2024 | Pune, India (Remote)
-- Engineered NFR Automation Framework — reduced manual testing by 90%
-- Integrated Jenkins CI/CD with Kafka, AWS S3, Splunk
-- Reduced infrastructure costs by 25%
+EDUCATION: PG Diploma Big Data Analytics (CDAC, 2019), B.E. Computer Science (RGTU, 2014)
+CERTIFICATIONS: Microsoft Azure AI Essentials, Azure ML Fundamentals, GitHub Copilot, AI Agents Fundamentals
+LANGUAGES: English (fluent), Swedish (basic), Hindi (native)`;
 
-3. Software Engineer → Senior Software Engineer | Securly India | Mar 2019 – May 2023 | Pune, India
-- ETL pipelines from 5+ sources — 60% faster reporting
-- PySpark URL classification — 10M+ URLs/month, 99.5% uptime
-- PDI platform — 45% marketing ROI improvement
-- Airflow-automated reports for 500+ clients — 80% faster
-- Reduced data errors by 30%, improved performance by 20%
-
-4. Full Stack & Android Developer | SPEGI Technologies | Dec 2015 – May 2018 | Indore, India
-- Swim team management app — reduced admin tasks by 70%
-- Android ERP app — 95% user satisfaction, 35% efficiency improvement
-
-PROJECTS:
-1. Swedish Energy & Weather Analytics Platform (Jan 2026–Present): Snowflake + Airflow + dbt + Streamlit. Analyses weather vs energy patterns in Sweden using real-time APIs.
-2. LUX Multi-Modal AI Assistant (Jun 2025): LangChain + Gemini Pro + LiveKit. Voice/video/chat agent with web search, email, weather tools.
-3. NFR Automation Framework (Jul–Dec 2024): Python + Kafka + JMeter + Jenkins + Splunk. 90% reduction in manual testing.
-4. Pagescan URL Classification (Sep 2021–May 2023): PySpark + Elasticsearch + AWS. 10M+ URLs/month.
-5. Product Data Intelligence / PDI (Oct 2019–May 2022): ETL + Tableau + Redshift. 45% marketing ROI improvement.
-6. Securly Visitor (Nov 2020–Dec 2021): Selenium scraping pipeline from 100+ US counties to PostgreSQL.
-7. Securly 24 Audit Reports (Mar–Dec 2019): Airflow + Flask + Redshift. Reports for 500+ clients, 80% faster.
-
-EDUCATION:
-- Post Graduate Diploma in Big Data Analytics — CDAC, 2018–2019
-- B.E. in Computer Science — Sanghvi Innovative Academy, RGTU, 2010–2014
-
-CERTIFICATIONS:
-- Microsoft Azure AI Essentials Professional Certificate (Microsoft & LinkedIn)
-- Microsoft Azure Machine Learning Fundamentals
-- Microsoft Azure AI Essentials: Workloads and Machine Learning on Azure
-- Building Applications with GitHub Copilot Agent Mode
-- AI Agents Fundamentals
-
-COMMUNITY:
-- Speaker, Women in AI Sweden
-- 8+ hackathon participant: AI Sweden, Microsoft, Google, Epiroc
-
-LANGUAGES: English (fluent), Swedish (basic, ongoing), Hindi (native)
-
---- END PROFILE ---`;
 
 interface Message {
   role: 'user' | 'assistant';
@@ -154,7 +96,7 @@ export default function AskLaxmi() {
       };
 
       const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -242,7 +184,7 @@ export default function AskLaxmi() {
             </div>
             <div>
               <p className="text-[#64ffda] font-mono font-semibold text-sm">Ask Laxmi</p>
-              <p className="text-[#8892b0] text-xs">AI portfolio assistant · Gemini 2.0</p>
+              <p className="text-[#8892b0] text-xs">AI portfolio assistant · Gemini 1.5</p>
             </div>
             <button
               onClick={() => setOpen(false)}
