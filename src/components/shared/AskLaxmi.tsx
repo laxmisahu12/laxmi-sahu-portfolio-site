@@ -1,29 +1,26 @@
 import { useState, useRef, useEffect } from 'react';
 import { X, Send, Loader2, Sparkles } from 'lucide-react';
 
-// ─── Laxmi's full profile context fed to Gemini ───────────────────────────
 const SYSTEM_PROMPT = `You are "Ask Laxmi" — a friendly assistant on Laxmi Sahu's portfolio. Answer in first person AS Laxmi. Be warm, concise (2-4 sentences). Never fabricate facts. If unsure, say "Feel free to reach out via the Contact page!"
 
 PROFILE:
 - Location: Stockholm, Sweden. Valid Swedish work permit. Available immediately.
 - Open to: Data Engineer, Analytics Engineer, Data Analyst roles
 - Email: laxmisahu1211@gmail.com
-- Experience: 7+ years in data engineering and analytics
 
-SKILLS: SQL (Advanced), Python, PySpark, dbt, Apache Airflow, Apache Kafka, Snowflake, BigQuery, AWS (Redshift/S3/EC2), Azure (Databricks), GCP, PostgreSQL, MySQL, MongoDB, Elasticsearch, Tableau, Power BI, Looker Studio, Streamlit, Kibana, Pandas, NumPy, Scikit-learn, LangChain, Flask, Medallion Architecture, Star Schema, Dimensional Modeling, ETL/ELT, A/B Testing, Statistical Analysis, GDPR compliance, Jenkins, Docker, Git
+SKILLS: SQL (Advanced), Python, PySpark, dbt, Apache Airflow, Apache Kafka, Snowflake, BigQuery, AWS (Redshift/S3/EC2), Azure (Databricks), GCP, PostgreSQL, MySQL, MongoDB, Elasticsearch, Tableau, Power BI, Looker Studio, Streamlit, Kibana, Pandas, NumPy, Scikit-learn, LangChain, Flask, Medallion Architecture, Star Schema, ETL/ELT, A/B Testing, Statistical Analysis, GDPR, Jenkins, Docker, Git
 
 EXPERIENCE:
-1. Freelance Data & Analytics Engineer | Jan 2025–Present | Stockholm — Built Swedish Energy & Weather Analytics Platform (Snowflake + Airflow + dbt + Streamlit). Built LUX AI assistant (LangChain + Gemini Pro + LiveKit). Speaker at Women in AI Sweden. 8+ hackathons.
+1. Freelance Data & Analytics Engineer | Jan 2025–Present | Stockholm — Built Swedish Energy & Weather Analytics Platform (Snowflake + Airflow + dbt + Streamlit). Built LUX AI assistant (LangChain + Gemini Pro + LiveKit). Speaker at Women in AI Sweden. 8+ hackathons (AI Sweden, Microsoft, Google, Epiroc).
 2. System Analyst | Bitwise Solutions | Jul–Dec 2024 | Remote — NFR Automation Framework (90% less manual testing), Jenkins + Kafka + Splunk, 25% cost reduction.
 3. Sr. Software Engineer | Securly India | Mar 2019–May 2023 — ETL pipelines (60% faster reporting), PySpark URL classification (10M+/month, 99.5% uptime), 45% marketing ROI improvement, 500+ client reports automated (80% faster), 30% fewer errors.
 4. Full Stack Developer | SPEGI Technologies | Dec 2015–May 2018 — Swim team app (70% less admin), Android ERP (95% satisfaction).
 
-PROJECTS: Swedish Energy Platform, LUX AI Assistant, NFR Automation Framework, Pagescan URL Classification, Product Data Intelligence (PDI), Securly Visitor scraper, Securly Audit Reports.
+PROJECTS: Swedish Energy & Weather Platform, LUX AI Assistant, NFR Automation Framework, Pagescan URL Classification, Product Data Intelligence (PDI), Securly Visitor scraper, Securly Audit Reports.
 
 EDUCATION: PG Diploma Big Data Analytics (CDAC, 2019), B.E. Computer Science (RGTU, 2014)
-CERTIFICATIONS: Microsoft Azure AI Essentials, Azure ML Fundamentals, GitHub Copilot, AI Agents Fundamentals
+CERTIFICATIONS: Microsoft Azure AI Essentials, Azure ML Fundamentals, GitHub Copilot Agent Mode, AI Agents Fundamentals
 LANGUAGES: English (fluent), Swedish (basic), Hindi (native)`;
-
 
 interface Message {
   role: 'user' | 'assistant';
@@ -65,69 +62,54 @@ export default function AskLaxmi() {
     setLoading(true);
 
     try {
-      const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+      const apiKey = import.meta.env.VITE_GROQ_API_KEY;
       if (!apiKey) throw new Error('NO_KEY');
 
-      // Build conversation history for Gemini
-      // System prompt injected as first user/model exchange for compatibility
-      const history = updatedMessages.slice(0, -1).map((m) => ({
-        role: m.role === 'user' ? 'user' : 'model',
-        parts: [{ text: m.text }],
-      }));
+      const payload = [
+        { role: 'system', content: SYSTEM_PROMPT },
+        ...updatedMessages.slice(0, -1).map((m) => ({
+          role: m.role === 'user' ? 'user' : 'assistant',
+          content: m.text,
+        })),
+        { role: 'user', content: text.trim() },
+      ];
 
-      const body = {
-        contents: [
-          // System context as first turn
-          {
-            role: 'user',
-            parts: [{ text: `INSTRUCTIONS: ${SYSTEM_PROMPT}\n\nACKNOWLEDGE: Understood, I will act as Ask Laxmi.` }],
-          },
-          {
-            role: 'model',
-            parts: [{ text: "Understood! I'm Ask Laxmi, Laxmi Sahu's AI assistant. I'm ready to help visitors learn about her experience, skills, projects, and availability. What would you like to know?" }],
-          },
-          ...history,
-          { role: 'user', parts: [{ text: text.trim() }] },
-        ],
-        generationConfig: {
-          temperature: 0.7,
-          maxOutputTokens: 400,
+      const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
         },
-      };
-
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body),
-        }
-      );
+        body: JSON.stringify({
+          model: 'llama3-8b-8192',
+          messages: payload,
+          temperature: 0.7,
+          max_tokens: 400,
+        }),
+      });
 
       if (!res.ok) {
         const errBody = await res.json().catch(() => ({}));
-        console.error('Gemini API error:', res.status, errBody);
+        console.error('Groq API error:', res.status, errBody);
         throw new Error(`API_ERROR_${res.status}: ${JSON.stringify(errBody)}`);
       }
+
       const data = await res.json();
-      console.log('Gemini response:', data);
       const reply =
-        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+        data?.choices?.[0]?.message?.content ||
         "I'm not sure how to answer that — try asking something else or visit the Contact page!";
 
       setMessages((prev) => [...prev, { role: 'assistant', text: reply }]);
     } catch (err: any) {
       console.error('AskLaxmi error:', err);
       if (err.message === 'NO_KEY') {
-        setError('API key not configured. Add VITE_GEMINI_API_KEY to your Vercel environment variables.');
-      } else if (err.message?.includes('API_ERROR_400')) {
-        setError('Bad request — the prompt may be too long. Try a shorter question.');
-      } else if (err.message?.includes('API_ERROR_403')) {
-        setError('API key invalid or not authorised. Check your VITE_GEMINI_API_KEY in Vercel settings.');
+        setError('API key not configured. Add VITE_GROQ_API_KEY to your Vercel environment variables.');
+      } else if (err.message?.includes('API_ERROR_401')) {
+        setError('Invalid API key. Check your VITE_GROQ_API_KEY in Vercel settings.');
       } else if (err.message?.includes('API_ERROR_429')) {
-        setError('Rate limit hit — you\'re on the free tier. Please wait a moment and try again.');
+        setError('Rate limit reached. Please wait a moment and try again.');
       } else {
-        setError(`Error: ${err.message || 'Unknown error. Check browser console for details.'}`);
+        setError(`Error: ${err.message || 'Unknown error — check browser console.'}`);
       }
     } finally {
       setLoading(false);
@@ -184,7 +166,7 @@ export default function AskLaxmi() {
             </div>
             <div>
               <p className="text-[#64ffda] font-mono font-semibold text-sm">Ask Laxmi</p>
-              <p className="text-[#8892b0] text-xs">AI portfolio assistant · Gemini 1.5</p>
+              <p className="text-[#8892b0] text-xs">AI portfolio assistant · Llama 3</p>
             </div>
             <button
               onClick={() => setOpen(false)}
