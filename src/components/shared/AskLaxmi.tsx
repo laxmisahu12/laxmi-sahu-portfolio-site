@@ -91,7 +91,7 @@ export default function AskLaxmi() {
       if (!res.ok) {
         const errBody = await res.json().catch(() => ({}));
         console.error('Groq API error:', res.status, errBody);
-        throw new Error(`API_ERROR_${res.status}: ${JSON.stringify(errBody, apiKey)}`);
+        throw new Error(`API_ERROR_${res.status}: ${JSON.stringify(errBody)}`);
       }
 
       const data = await res.json();
@@ -166,7 +166,7 @@ export default function AskLaxmi() {
             </div>
             <div>
               <p className="text-[#64ffda] font-mono font-semibold text-sm">Ask Laxmi</p>
-              <p className="text-[#8892b0] text-xs">AI portfolio assistant · Llama 3</p>
+              <p className="text-[#8892b0] text-xs">AI portfolio assistant · Llama 3.3</p>
             </div>
             <button
               onClick={() => setOpen(false)}

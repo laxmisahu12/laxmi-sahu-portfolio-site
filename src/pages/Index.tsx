@@ -32,10 +32,10 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Laxmi Sahu | Data Engineer & Full Stack Developer</title>
-        <meta name="description" content="Portfolio of Laxmi Sahu, a Data Engineer and Full Stack Developer with 7+ years of experience in Enterprise Application Development, specializing in ETL, Python, AWS and GCP." />
-        <meta property="og:title" content="Laxmi Sahu | Data Engineer & Full Stack Developer" />
-        <meta property="og:description" content="Portfolio of Laxmi Sahu, a Data Engineer and Full Stack Developer with 7+ years of experience in ETL, Python, AWS and GCP." />
+        <title>Laxmi Sahu | Data Engineer & Data Analyst | Stockholm</title>
+        <meta name="description" content="Portfolio of Laxmi Sahu — Data Engineer and Data Analyst with 7+ years of experience in ETL/ELT pipelines, dbt, Airflow, Snowflake, Tableau, and Power BI. Based in Stockholm, Sweden." />
+        <meta property="og:title" content="Laxmi Sahu | Data Engineer & Data Analyst | Stockholm" />
+        <meta property="og:description" content="Data Engineer and Data Analyst with 7+ years of experience building scalable pipelines, data warehouses, and BI dashboards. Based in Stockholm, Sweden." />
         <meta property="og:type" content="website" />
       </Helmet>
       <Hero />
