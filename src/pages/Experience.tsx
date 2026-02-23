@@ -6,54 +6,58 @@ import { Calendar, MapPin } from 'lucide-react';
 
 const experiences = [
   {
-    title: 'AI Engineer (Freelancer)',
-    company: 'Outlier.ai',
-    companyUrl: 'https://outlier.ai/',
-    period: 'January 2025 - Present',
+    title: 'Freelance Data & Analytics Engineer',
+    company: 'Self-Employed',
+    companyUrl: 'https://laxmisahu.vercel.app',
+    period: 'January 2025 – Present',
     location: 'Stockholm, Sweden',
     achievements: [
-      'Aim to streamline data preprocessing workflows by up to 40% through the integration of AI agents for automating missing value handling, outlier detection, and data transformation recommendations.',
-      'Expected to improve user adoption and engagement by 30–35% with a highly intuitive and responsive interface designed for both novice and experienced data scientists.',
-      'Plan to eliminate the need for multiple external tools by centralizing data upload, cleaning, visualization, and statistical analysis into a single unified platform.',
-      'Working toward achieving near real-time visualization generation, empowering users to explore datasets dynamically and derive insights faster.'
+      'Built Swedish Energy & Weather Analytics Platform: end-to-end data pipeline using Snowflake (medallion architecture), Apache Airflow, and dbt Cloud to ingest and model real-time Swedish energy and weather API data.',
+      'Designed analytics-ready fact and dimension tables with automated data quality tests and full dbt documentation, enabling trusted self-service analysis.',
+      'Developed an interactive Streamlit dashboard for energy trend exploration and forecasting, deployed on free cloud tiers (Astronomer, Snowflake, dbt Cloud, Streamlit Cloud).',
+      'Engineered LUX, a multi-modal AI assistant using LangChain, Google Gemini Pro, and LiveKit; integrated live web search, email, and weather APIs demonstrating advanced agentic AI design.',
+      'Active participant in 8+ hackathons (AI Sweden, Microsoft, Google, Epiroc) and speaker at Women in AI Sweden.'
     ]
   },
   {
-    title: 'System Analyst',
+    title: 'System Analyst – Data Engineering & QA Automation',
     company: 'Bitwise Solutions Pvt. Ltd',
     companyUrl: 'https://www.bitwiseglobal.com/',
-    period: 'July 2024 - December 2024',
-    location: 'Pune, India',
+    period: 'July 2024 – December 2024',
+    location: 'Pune, India (Remote)',
     achievements: [
-      'Engineered a module to generate JMX files from Postman Collection enabling seamless integration with JMeter.',
-      'Integrated the solution into the Jenkins pipeline, reducing manual work by 90%.',
-      'Utilized Kafka for real-time messaging, Splunk for reporting and AWS S3 for cloud storage.'
+      'Engineered NFR Automation Framework that automated JMX file generation from Postman Collections, reducing manual performance testing efforts by 90% and accelerating QA cycles.',
+      'Integrated framework into Jenkins CI/CD pipeline with Apache Kafka for real-time data streaming, AWS S3 for artifact storage, and Splunk for end-to-end data observability.',
+      'Built load testing frameworks for high-volume data processing systems, ensuring reliability under peak loads of 100K+ requests per hour.',
+      'Implemented data quality validation frameworks across 5–7 datasets in Splunk, enabling real-time analytics and observable, data-driven decision making.',
+      'Optimised data pipeline workflows, reducing infrastructure costs by 25% through intelligent resource allocation and automated scaling.'
     ]
   },
   {
-    title: 'Sr. Software Engineer',
+    title: 'Software Engineer → Senior Software Engineer',
     company: 'Securly India Private Limited',
     companyUrl: 'https://www.securly.com/',
-    period: 'March 2019 - May 2023',
+    period: 'March 2019 – May 2023',
     location: 'Pune, India',
     achievements: [
-      'Developed a module for domain and URL classification, processing over 10 million URLs monthly.',
-      'Enhanced legacy code, reducing system errors by 30% and improving performance by 20%.',
-      'Led ETL project, extracting and transforming data from 5+ sources, resulting in a 60% increase in reporting efficiency.',
-      'Enabled data analysts to generate insights, contributing to a 45% improvement in marketing and sales strategies.',
-      'Collected offender data from 100+ US counties using Selenium and web scraping techniques.',
-      'Created an audit reporting system, generating PR reports for 500+ clients, reducing report generation time by 80%.'
+      'Designed and scaled large-scale ETL/ELT pipelines integrating 5+ disparate data sources, improving reporting efficiency by 60% and reducing data latency from hours to minutes.',
+      'Built domain/URL classification module using PySpark and Spark/Hadoop, processing 10M+ URLs monthly with 99.5% uptime.',
+      'Architected Product Data Intelligence (PDI) platform delivering 45% improvement in marketing ROI through automated data collection, transformation, and BI dashboards.',
+      'Automated audit reporting for 500+ clients using Apache Airflow-scheduled ETL jobs and SQL optimisation, reducing report generation time from 8 hours to 90 minutes (80% improvement).',
+      'Led legacy system refactoring, reducing data processing errors by 30% and improving system performance by 20%.',
+      'Developed web scraping pipeline aggregating offender data from 100+ US county websites using Selenium and BeautifulSoup, with daily incremental loads to PostgreSQL.'
     ]
   },
   {
-    title: 'Sr. Software Engineer',
+    title: 'Full Stack & Android Developer',
     company: 'SPEGI Technologies',
     companyUrl: 'http://www.spegitech.com/',
-    period: 'December 2015 - May 2018',
+    period: 'December 2015 – May 2018',
     location: 'Indore, India',
     achievements: [
-      'Engineered Swim Team Management web application, reducing administrative tasks by 70%, saving coaches 10+ hours weekly.',
-      'Developed an Android app for managing Education ERP modules, used by institutions, improving management efficiency by 35% and achieving a 95% user satisfaction rate.'
+      'Engineered Swim Team Management web application with integrated analytics and reporting, reducing administrative tasks by 70% and saving coaches 10+ hours weekly for 50+ clients.',
+      'Developed Android ERP application for educational institutions with reporting dashboards and data visualisation, improving management efficiency by 35% with 95% user satisfaction.',
+      'Designed normalised MySQL database schemas supporting both transactional and analytical workloads.'
     ]
   }
 ];
@@ -62,8 +66,8 @@ const Experience = () => {
   return (
     <>
       <Helmet>
-        <title>Experience | Laxmi Sahu</title>
-        <meta name="description" content="Explore Laxmi Sahu's professional experience as a Data Engineer and Full Stack Developer across various roles and organizations." />
+        <title>Experience | Laxmi Sahu — Data Engineer & Data Analyst</title>
+        <meta name="description" content="Professional experience of Laxmi Sahu — Data Engineer and Data Analyst with roles at Securly, Bitwise, and freelance projects in Stockholm, Sweden." />
       </Helmet>
       
       <PageBanner 

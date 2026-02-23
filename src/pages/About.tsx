@@ -7,8 +7,8 @@ import { Briefcase, GraduationCap } from 'lucide-react';
 const About = () => {
   return <>
       <Helmet>
-        <title>About | Laxmi Sahu</title>
-        <meta name="description" content="Learn about Laxmi Sahu, a Data Engineer and Full Stack Developer with 7+ years of experience specializing in data pipelines, ETL, and cloud solutions." />
+        <title>About | Laxmi Sahu — Data Engineer & Data Analyst</title>
+        <meta name="description" content="About Laxmi Sahu — Data Engineer and Data Analyst with 7+ years of experience in ETL/ELT pipelines, dbt, Apache Airflow, Snowflake, Tableau, Power BI, and Python. Based in Stockholm, Sweden." />
       </Helmet>
       
       <PageBanner title="About Me" subtitle="Learn more about my background, expertise, and journey" />
@@ -20,24 +20,25 @@ const About = () => {
             
             <div className="space-y-4 text-lg">
               <p>
-                With 7+ years of experience in Enterprise Application Development, I specialize in Data Engineering, ETL, Python, GCP and AWS to build scalable, efficient, and high-performance solutions.
+                Data Engineer and Data Analyst with 7+ years of experience designing and building scalable data platforms, ETL/ELT pipelines, and BI solutions that transform complex datasets into strategic business decisions.
               </p>
               <p>
-                My expertise spans across designing data pipelines, real-time processing, automation frameworks, and system optimization, leading to impactful results such as:
+                My expertise spans the full modern data stack — from pipeline orchestration with Apache Airflow and dbt, to cloud data warehousing in Snowflake, BigQuery, and Redshift, to delivering self-service dashboards in Tableau, Power BI, and Looker Studio.
+              </p>
+              <p>
+                Key impact delivered across my career:
               </p>
               
               <ul className="list-disc pl-6 space-y-2">
-                <li>90% reduction in manual efforts by automating workflows using JMeter, Postman, and Jenkins.</li>
-                <li>30% decrease in system errors and 20% performance improvement in critical applications.</li>
-                <li>60% boost in reporting efficiency and 45% enhancement in marketing insights through data analytics.</li>
-                <li>Building and optimizing large-scale ETL pipelines, processing over 10M+ URLs monthly for classification and analysis.</li>
+                <li>45% improvement in marketing ROI through BI dashboards and actionable data insights.</li>
+                <li>60% faster reporting and 80% reduction in manual processes through ETL automation and pipeline optimisation.</li>
+                <li>30% decrease in data processing errors and 20% system performance improvement through data quality frameworks.</li>
+                <li>10M+ records processed monthly with 99.5% uptime using PySpark and distributed computing.</li>
+                <li>500+ client reports automated using advanced SQL optimisation and Apache Airflow scheduling.</li>
               </ul>
               
               <p>
-                I am proficient in Agile Methodology & SDLC for full application cycles including Requirement Analysis, Design, Development, Testing and Enhancements.
-              </p>
-              <p>
-                I have extensive expertise in Data Visualization tools like Mode Analytics, Tableau, Looker Studio and Elastic Kibana for actionable insights and reporting.
+                Currently based in Stockholm with a valid Swedish work permit. Actively seeking Data Engineer and Data Analyst roles where technical depth meets business impact.
               </p>
               
               <div className="mt-8">
@@ -72,12 +73,8 @@ const About = () => {
                 
                 <div className="space-y-6">
                   <div className="timeline-item">
-                    <h4 className="text-lg font-medium">AI Engineer (Freelancer)</h4>
-                    <p className="text-primary">
-                      <a href="https://outlier.ai" target="_blank" rel="noopener noreferrer" className="hover:underline">
-                        Outlier.ai
-                      </a>
-                    </p>
+                    <h4 className="text-lg font-medium">Freelance Data & Analytics Engineer</h4>
+                    <p className="text-primary">Self-Employed</p>
                     <p className="text-muted-foreground">January 2025 - Present | Stockholm, Sweden</p>
                   </div>
                   

@@ -13,13 +13,13 @@ const Hero = () => {
           <div className="text-primary mb-5 font-mono">Hi, my name is</div>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-4">
             <span className="text-foreground block mb-2 hover:text-primary transition-colors">Laxmi Sahu.</span>
-            <span className="text-muted-foreground block">I build data solutions.</span>
+            <span className="text-muted-foreground block">I turn data into decisions.</span>
           </h1>
           
           <p className="text-muted-foreground text-lg max-w-2xl mb-10 mt-6">
-            I'm a Data Engineer & Full Stack Developer specializing in building exceptional 
-            data pipelines and applications. Currently focused on creating scalable 
-            solutions using Python, AWS and GCP.
+            Data Engineer & Data Analyst with 7+ years of experience building scalable ETL/ELT pipelines,
+            data warehouses, and BI dashboards that drive real business impact. Specialising in
+            SQL, Python, dbt, Apache Airflow, Snowflake, Tableau, and Power BI. Based in Stockholm 🇸🇪
           </p>
           
           <div className="flex flex-wrap gap-4 mb-8">

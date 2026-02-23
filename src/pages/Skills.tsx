@@ -2,53 +2,53 @@
 import PageBanner from '@/components/shared/PageBanner';
 import SectionHeading from '@/components/shared/SectionHeading';
 import { Helmet } from 'react-helmet-async';
-import { Code, Database, Server, Globe, FileCode, BarChart, Terminal, Cog, Settings, WifiIcon } from 'lucide-react';
+import { Code, Database, Server, Globe, FileCode, BarChart, Terminal, Cog, Settings } from 'lucide-react';
 
 const skillGroups = [
   {
-    category: 'Programming Languages',
-    skills: ['Python', 'Java', 'SQL'],
+    category: 'Languages & Query',
+    skills: ['SQL (Advanced)', 'Python', 'PySpark', 'Bash'],
     icon: <Code className="h-6 w-6 text-primary" />
   },
   {
-    category: 'Frameworks & Libraries',
-    skills: ['PySpark3', 'Flask', 'Pandas', 'NumPy'],
-    icon: <FileCode className="h-6 w-6 text-primary" />
-  },
-  {
-    category: 'Data Engineering',
-    skills: ['ETL', 'Web Scraping', 'Data Pipelines', 'Data Modeling'],
+    category: 'Data Engineering & Pipelines',
+    skills: ['ETL/ELT Development', 'Apache Airflow', 'dbt', 'Apache Kafka', 'Medallion Architecture', 'Star Schema', 'Dimensional Modeling', 'Event-Driven Architecture'],
     icon: <Database className="h-6 w-6 text-primary" />
   },
   {
-    category: 'Databases',
-    skills: ['MySQL', 'PostgreSQL', 'AWS Redshift', 'Redis', 'Elasticsearch'],
-    icon: <Server className="h-6 w-6 text-primary" />
-  },
-  {
     category: 'Cloud Platforms',
-    skills: ['AWS ECS', 'EC2', 'S3', 'Cloud Watch', 'ASG', 'GCP', 'BigQuery'],
+    skills: ['Snowflake', 'GCP (BigQuery, Firebase)', 'AWS (Redshift, S3, EC2)', 'Azure (Databricks, Synapse, SQL)'],
     icon: <Globe className="h-6 w-6 text-primary" />
   },
   {
-    category: 'DevOps & Automation',
-    skills: ['Jenkins', 'Selenium', 'JMeter', 'Git'],
-    icon: <Settings className="h-6 w-6 text-primary" />
+    category: 'Databases',
+    skills: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'Elasticsearch'],
+    icon: <Server className="h-6 w-6 text-primary" />
   },
   {
-    category: 'API & Integration',
-    skills: ['REST API', 'gRPC', 'Email API', 'Slack API', 'Kafka'],
-    icon: <WifiIcon className="h-6 w-6 text-primary" />
-  },
-  {
-    category: 'Data Visualization',
-    skills: ['Mode Analytics', 'Tableau', 'Looker Studio', 'Elastic Kibana', 'Matplotlib', 'Seaborn'],
+    category: 'BI & Data Visualisation',
+    skills: ['Tableau', 'Power BI', 'Looker Studio', 'Streamlit', 'Kibana', 'Matplotlib', 'Seaborn'],
     icon: <BarChart className="h-6 w-6 text-primary" />
   },
   {
-    category: 'Tools & IDE',
-    skills: ['Postman', 'Ubuntu', 'PyCharm', 'VSCode'],
+    category: 'Data Analysis',
+    skills: ['Statistical Analysis', 'A/B Testing', 'Cohort Analysis', 'Funnel Analysis', 'Churn Prediction', 'KPI Development', 'Predictive Analytics'],
+    icon: <Cog className="h-6 w-6 text-primary" />
+  },
+  {
+    category: 'Data Quality & Observability',
+    skills: ['Data Governance', 'Data Profiling', 'Anomaly Detection', 'Splunk', 'CloudWatch', 'GDPR / PII Compliance'],
     icon: <Terminal className="h-6 w-6 text-primary" />
+  },
+  {
+    category: 'DevOps & Automation',
+    skills: ['CI/CD', 'Jenkins', 'Azure DevOps', 'Git', 'Docker', 'JMeter', 'Selenium'],
+    icon: <Settings className="h-6 w-6 text-primary" />
+  },
+  {
+    category: 'Frameworks & Libraries',
+    skills: ['Pandas', 'NumPy', 'Scikit-learn', 'Flask', 'LangChain', 'BeautifulSoup'],
+    icon: <FileCode className="h-6 w-6 text-primary" />
   }
 ];
 
@@ -56,8 +56,8 @@ const Skills = () => {
   return (
     <>
       <Helmet>
-        <title>Skills | Laxmi Sahu</title>
-        <meta name="description" content="Explore Laxmi Sahu's technical skills and expertise in data engineering, programming languages, cloud platforms, and more." />
+        <title>Skills | Laxmi Sahu — Data Engineer & Data Analyst</title>
+        <meta name="description" content="Technical skills of Laxmi Sahu: SQL, Python, dbt, Apache Airflow, Snowflake, Tableau, Power BI, BigQuery, AWS, GCP, Azure, PySpark, data modeling, and more." />
       </Helmet>
       
       <PageBanner 

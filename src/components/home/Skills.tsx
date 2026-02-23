@@ -5,24 +5,24 @@ import { Button } from '@/components/ui/button';
 
 const skills = [
   {
-    category: 'Languages',
-    items: ['Python', 'Java', 'SQL'],
+    category: 'Languages & Query',
+    items: ['SQL (Advanced)', 'Python', 'PySpark', 'Bash'],
     icon: <Code className="h-6 w-6 text-primary" />
   },
   {
-    category: 'Frameworks & Libraries',
-    items: ['PySpark', 'Flask', 'Pandas', 'NumPy'],
-    icon: <FileCode className="h-6 w-6 text-primary" />
-  },
-  {
-    category: 'Data & Cloud',
-    items: ['ETL', 'AWS', 'GCP', 'BigQuery'],
+    category: 'Data Engineering',
+    items: ['Apache Airflow', 'dbt', 'Apache Kafka', 'ETL/ELT', 'Medallion Architecture'],
     icon: <Database className="h-6 w-6 text-primary" />
   },
   {
-    category: 'Tools & Technologies',
-    items: ['Tableau', 'Jenkins', 'Selenium', 'Redis'],
-    icon: <Activity className="h-6 w-6 text-primary" />
+    category: 'Cloud & Warehousing',
+    items: ['Snowflake', 'BigQuery', 'AWS Redshift', 'Azure Databricks', 'GCP'],
+    icon: <Server className="h-6 w-6 text-primary" />
+  },
+  {
+    category: 'BI & Analytics',
+    items: ['Tableau', 'Power BI', 'Looker Studio', 'Streamlit', 'Kibana'],
+    icon: <GanttChart className="h-6 w-6 text-primary" />
   }
 ];
 

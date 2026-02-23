@@ -16,15 +16,15 @@ const About = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
           <p className="text-lg mb-6">
-            With over 7 years of experience in Enterprise Application Development, I specialize in Data Engineering, ETL, Python, GCP and AWS to build scalable, efficient, and high-performance solutions.
+            With 7+ years of experience in data engineering and analytics, I specialise in designing scalable ETL/ELT pipelines, data warehouses, and business intelligence solutions that transform raw data into strategic decisions.
           </p>
           
           <p className="text-lg mb-6">
-            My expertise spans across designing data pipelines, real-time processing, automation frameworks, and system optimization, which has led to impactful results in various organizations.
+            My work spans the full data stack — from ingesting and modelling data using Python, SQL, Apache Airflow, dbt, and Snowflake, to delivering self-service dashboards in Tableau, Power BI, and Looker Studio that stakeholders actually use.
           </p>
           
           <p className="text-lg mb-6">
-            I am proficient in Agile Methodology & SDLC for full application cycles and I have a strong background in data visualization using tools like Mode Analytics, Tableau, Looker Studio and Elastic Kibana.
+            I've delivered measurable impact across every role: 45% improvement in marketing ROI, 60% faster reporting, 80% reduction in manual processes, and data pipelines processing 10M+ records monthly. Currently based in Stockholm, open to Data Engineer and Data Analyst roles.
           </p>
           
           <div className="mt-8">
