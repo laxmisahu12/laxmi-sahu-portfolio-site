@@ -39,7 +39,7 @@ const ContactIcons = () => {
         className="flex items-center gap-2"
       >
         <a 
-          href="https://www.linkedin.com/in/laxmisahu1211" 
+          href="https://www.linkedin.com/in/laxmisahu12" 
           target="_blank" 
           rel="noopener noreferrer" 
           className="flex items-center gap-2"

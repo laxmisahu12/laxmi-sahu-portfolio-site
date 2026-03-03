@@ -23,7 +23,7 @@ const SideNav = () => {
             <Github size={20} />
           </a>
           <a 
-            href="https://www.linkedin.com/in/laxmisahu1211" 
+            href="https://www.linkedin.com/in/laxmisahu12" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
